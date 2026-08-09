@@ -2,13 +2,19 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-# Poetry instala las dependencias del proyecto en el entorno del sistema:
-# dentro de un contenedor no hace falta un virtualenv adicional.
-RUN pip install --no-cache-dir poetry==1.8.3 \
-    && poetry config virtualenvs.create false
-
-COPY pyproject.toml poetry.lock ./
-RUN poetry install --no-root --only main
+# Las dependencias se declaran explícitamente en vez de instalar el
+# proyecto como paquete: este proyecto son módulos sueltos, no una
+# librería, y no tiene un paquete importable que empaquetar.
+RUN pip install --no-cache-dir \
+    "langgraph>=1.2.10,<2.0.0" \
+    "langchain-openai>=1.4.2,<2.0.0" \
+    "langgraph-checkpoint-sqlite>=3.1.1,<4.0.0" \
+    "fastapi>=0.141.1,<0.142.0" \
+    "uvicorn>=0.52.1,<0.53.0" \
+    "python-dotenv>=1.2.2,<2.0.0" \
+    "pydantic>=2.13.4,<3.0.0" \
+    "pandas>=3.0.5,<4.0.0" \
+    "httpx>=0.28,<1.0"
 
 COPY . .
 
