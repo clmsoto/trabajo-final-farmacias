@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Turno · Farmacias de turno en Chile</title>
+<title>Farmacias de turno e información de medicamentos · Chile</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
   html, body { height: 100%; }
   body {
     margin: 0; background: var(--fondo); color: var(--tinta);
-    font-family: var(--cuerpo); font-size: 15px; line-height: 1.6;
+    font-family: var(--cuerpo); font-size: 14px; line-height: 1.6;
     display: flex; justify-content: center;
     -webkit-font-smoothing: antialiased;
   }
@@ -36,24 +36,20 @@
 
   /* ---- Cabecera ---- */
   header { padding: 22px 2px 0; }
-  .marca { display: flex; align-items: baseline; gap: 10px; margin-bottom: 3px; }
+  .marca { display: flex; align-items: center; gap: 9px; margin-bottom: 15px; }
   h1 {
-    font-family: var(--display); font-weight: 700; font-size: 21px;
-    letter-spacing: -0.03em; margin: 0;
+    font-family: var(--display); font-weight: 700; font-size: 17px;
+    letter-spacing: -0.02em; margin: 0; line-height: 1.3;
   }
-  .cruz { width: 11px; height: 11px; position: relative; flex: none; align-self: center; }
+  .cruz { width: 10px; height: 10px; position: relative; flex: none; }
   .cruz::before, .cruz::after { content: ""; position: absolute; background: var(--senal); }
-  .cruz::before { left: 4px; top: 0; width: 3px; height: 11px; }
-  .cruz::after  { top: 4px; left: 0; height: 3px; width: 11px; }
-  .sub {
-    font-family: var(--dato); font-size: 11px; color: var(--tenue);
-    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px;
-  }
+  .cruz::before { left: 3.5px; top: 0; width: 3px; height: 10px; }
+  .cruz::after  { top: 3.5px; left: 0; height: 3px; width: 10px; }
 
   /* ---- Banda de 24 horas: el elemento firma ---- */
   .banda { margin-bottom: 6px; }
   .franja {
-    position: relative; height: 26px; background: var(--superficie);
+    position: relative; height: 24px; background: var(--superficie);
     border: 1px solid var(--linea); border-radius: 3px; overflow: hidden;
   }
   .tramo {
@@ -69,36 +65,36 @@
   }
   .escala {
     display: flex; justify-content: space-between;
-    font-family: var(--dato); font-size: 10px; color: var(--tenue);
+    font-family: var(--dato); font-size: 9.5px; color: var(--tenue);
     padding-top: 5px; letter-spacing: 0.04em;
   }
   .leyenda {
-    font-family: var(--dato); font-size: 10.5px; color: var(--tenue);
+    font-family: var(--dato); font-size: 10px; color: var(--tenue);
     padding: 8px 0 14px; border-bottom: 1px solid var(--linea);
-    letter-spacing: 0.03em;
+    letter-spacing: 0.03em; margin: 0;
   }
   .leyenda strong { color: var(--senal); font-weight: 500; }
 
   /* ---- Conversación ---- */
   #chat {
     flex: 1; overflow-y: auto; padding: 18px 0 8px;
-    display: flex; flex-direction: column; gap: 14px;
+    display: flex; flex-direction: column; gap: 13px;
     scrollbar-width: thin; scrollbar-color: var(--linea) transparent;
   }
   .msg { max-width: 86%; white-space: pre-wrap; word-wrap: break-word; }
   .bot {
     align-self: flex-start; background: var(--superficie);
     border: 1px solid var(--linea); border-left: 2px solid var(--senal);
-    padding: 12px 15px; border-radius: 3px;
+    padding: 11px 14px; border-radius: 3px;
   }
   .user {
     align-self: flex-end; background: var(--elevada);
-    padding: 10px 15px; border-radius: 3px;
+    padding: 10px 14px; border-radius: 3px;
   }
   .ruta {
-    align-self: flex-start; font-family: var(--dato); font-size: 10px;
+    align-self: flex-start; font-family: var(--dato); font-size: 9.5px;
     color: var(--tenue); letter-spacing: 0.1em; text-transform: uppercase;
-    margin-top: -9px; padding-left: 3px;
+    margin-top: -8px; padding-left: 3px;
   }
   .puntos::after {
     content: "···"; animation: latir 1.2s steps(1) infinite;
@@ -109,31 +105,38 @@
   /* ---- Entrada ---- */
   form { display: flex; gap: 8px; padding: 12px 0 10px; border-top: 1px solid var(--linea); }
   input {
-    flex: 1; padding: 12px 14px; font-family: var(--cuerpo); font-size: 15px;
+    flex: 1; padding: 11px 13px; font-family: var(--cuerpo); font-size: 14px;
     background: var(--superficie); border: 1px solid var(--linea);
     border-radius: 3px; color: var(--tinta);
   }
-  input::placeholder { color: #9a9e a2; }
   input::placeholder { color: #9a9ea2; }
   input:focus-visible, button:focus-visible {
     outline: 2px solid var(--senal); outline-offset: 1px;
   }
   button {
-    padding: 12px 18px; font-family: var(--display); font-weight: 500;
-    font-size: 14px; letter-spacing: 0.01em; border: 1px solid var(--senal);
+    padding: 11px 17px; font-family: var(--display); font-weight: 500;
+    font-size: 13px; letter-spacing: 0.01em; border: 1px solid var(--senal);
     border-radius: 3px; background: transparent; color: var(--senal);
     cursor: pointer; transition: background .18s ease, color .18s ease;
   }
   button:hover:not(:disabled) { background: var(--senal); color: var(--superficie); }
   button:disabled { opacity: .35; cursor: default; }
-  .pie { font-size: 11px; color: var(--tenue); padding-bottom: 14px; line-height: 1.5; }
+
+  /* ---- Pie ---- */
+  .pie { padding-bottom: 14px; }
+  .pie p { font-size: 10.5px; color: var(--tenue); line-height: 1.5; margin: 0 0 6px; }
+  .credito {
+    font-family: var(--dato); font-size: 9.5px !important;
+    letter-spacing: 0.03em; padding-top: 7px;
+    border-top: 1px solid var(--linea); margin-bottom: 0 !important;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::after { animation: none !important; transition: none !important; }
   }
   @media (max-width: 480px) {
     .msg { max-width: 92%; }
-    h1 { font-size: 19px; }
+    h1 { font-size: 15px; }
   }
 </style>
 </head>
@@ -143,9 +146,8 @@
   <header>
     <div class="marca">
       <span class="cruz" aria-hidden="true"></span>
-      <h1>Turno</h1>
+      <h1>Farmacias de turno e información de medicamentos · Chile</h1>
     </div>
-    <p class="sub">Farmacias de turno · Chile</p>
 
     <!-- Banda de 24 h: marca la hora actual y, cuando hay resultado,
          la ventana de apertura. Un turno nocturno se dibuja en dos
@@ -171,10 +173,17 @@
     <button id="enviar" type="submit">Consultar</button>
   </form>
 
-  <p class="pie">
-    Informa locales y turnos publicados por MINSAL, y fichas referenciales
-    de medicamentos. No indica dosis, tratamientos ni qué medicamento tomar.
-  </p>
+  <div class="pie">
+    <p>
+      Informa locales y turnos publicados por MINSAL, y fichas referenciales
+      de medicamentos. No indica dosis, tratamientos ni qué medicamento tomar.
+    </p>
+    <p class="credito">
+      Trabajo final · Diploma en IA Generativa para Organizaciones ·
+      FEN UEjecutivos, Universidad de Chile<br>
+      Mariano Soto · Enrique Guerra · Diego Herrera
+    </p>
+  </div>
 </div>
 
 <script>
@@ -189,7 +198,6 @@
   const franja  = document.getElementById("franja");
   const marcaAhora = document.getElementById("ahora");
   const leyenda = document.getElementById("leyenda");
-  const reloj   = document.getElementById("reloj");
 
   // ---- Banda de 24 horas ----------------------------------------------
   // Cada hora es una marca; las de 6 en 6 van más marcadas.
@@ -205,12 +213,18 @@
     return h * 60 + m;
   };
 
+  // La hora se guarda en una variable en vez de leerse del DOM: la leyenda
+  // se reescribe con cada respuesta y el nodo del reloj deja de existir.
+  let horaActual = "--:--";
+
   function ubicarAhora() {
     const d = new Date();
     const pct = (d.getHours() * 60 + d.getMinutes()) / 1440 * 100;
     marcaAhora.style.left = pct + "%";
-    reloj.textContent = String(d.getHours()).padStart(2, "0") + ":" +
-                        String(d.getMinutes()).padStart(2, "0");
+    horaActual = String(d.getHours()).padStart(2, "0") + ":" +
+                 String(d.getMinutes()).padStart(2, "0");
+    const reloj = document.getElementById("reloj");
+    if (reloj) reloj.textContent = horaActual;
   }
   ubicarAhora();
   setInterval(ubicarAhora, 30000);
@@ -234,8 +248,7 @@
     const m = texto.match(/(\d{2}:\d{2})\s*a\s*(\d{2}:\d{2})/);
     limpiarTramos();
     if (!m) {
-      leyenda.innerHTML = 'Hora actual <strong id="reloj">' +
-                          reloj.textContent + '</strong>';
+      leyenda.innerHTML = 'Hora actual <strong id="reloj">' + horaActual + '</strong>';
       return;
     }
     const ini = aMinutos(m[1]), fin = aMinutos(m[2]);
