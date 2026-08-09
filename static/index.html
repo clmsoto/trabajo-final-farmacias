@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farmacias de turno · Asistente</title>
+<style>
+  :root {
+    --fondo: #faf9f7;
+    --texto: #1c1b1a;
+    --tenue: #6b6866;
+    --borde: #e3e0dc;
+    --acento: #2d6a5a;
+    --burbuja-bot: #ffffff;
+    --burbuja-user: #2d6a5a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--fondo); color: var(--texto);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: flex; justify-content: center; min-height: 100vh;
+  }
+  .app {
+    width: 100%; max-width: 720px; display: flex; flex-direction: column;
+    height: 100vh; padding: 0 16px;
+  }
+  header { padding: 20px 4px 14px; border-bottom: 1px solid var(--borde); }
+  h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+  .sub { margin: 4px 0 0; font-size: 13px; color: var(--tenue); }
+  #chat { flex: 1; overflow-y: auto; padding: 18px 0; display: flex;
+          flex-direction: column; gap: 12px; }
+  .msg { max-width: 82%; padding: 11px 14px; border-radius: 14px;
+         white-space: pre-wrap; word-wrap: break-word; font-size: 15px; }
+  .bot { background: var(--burbuja-bot); border: 1px solid var(--borde);
+         align-self: flex-start; border-bottom-left-radius: 4px; }
+  .user { background: var(--burbuja-user); color: #fff;
+          align-self: flex-end; border-bottom-right-radius: 4px; }
+  .meta { font-size: 11px; color: var(--tenue); align-self: flex-start;
+          margin: -6px 0 0 4px; font-variant: small-caps; letter-spacing: 0.04em; }
+  form { display: flex; gap: 8px; padding: 12px 0 18px;
+         border-top: 1px solid var(--borde); }
+  input {
+    flex: 1; padding: 12px 14px; font-size: 15px; font-family: inherit;
+    border: 1px solid var(--borde); border-radius: 10px; background: #fff;
+  }
+  input:focus { outline: 2px solid var(--acento); outline-offset: -1px; }
+  button {
+    padding: 12px 20px; font-size: 15px; font-family: inherit; font-weight: 500;
+    border: none; border-radius: 10px; background: var(--acento);
+    color: #fff; cursor: pointer;
+  }
+  button:disabled { opacity: 0.5; cursor: default; }
+  .aviso { font-size: 12px; color: var(--tenue); padding: 0 4px 10px;
+           border-bottom: 1px solid var(--borde); }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Farmacias de turno</h1>
+    <p class="sub">Asistente informativo · Datos MINSAL y vademécum referencial</p>
+  </header>
+  <p class="aviso">
+    No entrega dosis, diagnósticos ni recomendaciones de tratamiento.
+    Ante una urgencia, consulta a un profesional de salud.
+  </p>
+
+  <div id="chat"></div>
+
+  <form id="form">
+    <input id="entrada" autocomplete="off" placeholder="¿Hay farmacia de turno en Recoleta?" required>
+    <button id="enviar" type="submit">Enviar</button>
+  </form>
+</div>
+
+<script>
+  // El user_id identifica el hilo de conversación en el servidor.
+  // Se genera uno por pestaña: no hay login, y el historial vive en el
+  // checkpointer del grafo, no en el navegador.
+  const userId = "web_" + Math.random().toString(36).slice(2, 10);
+
+  const chat = document.getElementById("chat");
+  const form = document.getElementById("form");
+  const entrada = document.getElementById("entrada");
+  const enviar = document.getElementById("enviar");
+
+  function burbuja(texto, clase) {
+    const div = document.createElement("div");
+    div.className = "msg " + clase;
+    div.textContent = texto;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+    return div;
+  }
+
+  function etiqueta(texto) {
+    const div = document.createElement("div");
+    div.className = "meta";
+    div.textContent = texto;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  burbuja(
+    "Hola. Puedo ayudarte a encontrar farmacias de turno por comuna y " +
+    "explicarte fichas referenciales de medicamentos.",
+    "bot"
+  );
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const texto = entrada.value.trim();
+    if (!texto) return;
+
+    burbuja(texto, "user");
+    entrada.value = "";
+    enviar.disabled = true;
+    const pensando = burbuja("…", "bot");
+
+    try {
+      const r = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId, mensaje: texto })
+      });
+
+      if (!r.ok) throw new Error("HTTP " + r.status);
+
+      const data = await r.json();
+      pensando.textContent = data.respuesta;
+      // La ruta tomada se muestra como evidencia del enrutamiento del grafo.
+      if (data.intent) etiqueta("ruta: " + data.intent);
+    } catch (err) {
+      pensando.textContent =
+        "No se pudo obtener respuesta. Intenta nuevamente en unos momentos.";
+    } finally {
+      enviar.disabled = false;
+      entrada.focus();
+    }
+  });
+</script>
+</body>
+</html>

@@ -371,8 +371,10 @@ def formatear_contexto(resultado: dict) -> str:
         )
 
     lineas.append(
-        "Nota: la fuente informa locales y turnos. No confirma stock, "
-        "precio ni disponibilidad de un medicamento."
+        "[Nota interna: esta fuente informa locales y turnos únicamente. "
+        "Si el usuario pregunta por stock, precio o disponibilidad de un "
+        "medicamento, aclara que no puedes confirmarlo. No menciones esta "
+        "limitación si no viene al caso.]"
     )
     return "\n".join(lineas)
 

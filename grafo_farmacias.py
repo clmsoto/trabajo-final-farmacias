@@ -16,7 +16,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import BaseModel, Field
 from tool_rag import recuperar_contexto
-from tool_minsal import buscar_turnos, formatear_contexto
+from tool_minsal import buscar_turnos, formatear_contexto, normalizar_texto
 from guardrail_salida import revisar
 
 load_dotenv()
@@ -41,6 +41,8 @@ class AssistantState(TypedDict):
     rag_context: str | None
     rag_citas: list | None
     minsal_sugerencias: list | None
+    minsal_comuna_consultada: str | None
+    minsal_resultado: dict | None
 
 
 # ---------------------------------------------------------------------------
@@ -154,10 +156,27 @@ def tool_minsal_node(state: AssistantState) -> dict:
             "minsal_sugerencias": [],
         }
 
+    # Si es la misma comuna del turno anterior, se reutiliza el resultado
+    # ya obtenido. Un seguimiento como "¿cuál es su dirección?" no
+    # necesita volver a consultar la API: los datos no cambiaron entre
+    # dos mensajes consecutivos, y reconsultar arriesga que el resultado
+    # difiera del que el usuario ya vio en pantalla.
+    previo = state.get("minsal_resultado")
+    misma_comuna = (
+        state.get("minsal_comuna_consultada") == normalizar_texto(comuna)
+    )
+    if previo and misma_comuna:
+        print(f"[minsal] Reutilizando resultado de {comuna} (turno previo)")
+        return {
+            "minsal_context": formatear_contexto(previo),
+            "minsal_sugerencias": previo.get("comunas_sugeridas") or [],
+            "minsal_comuna_consultada": normalizar_texto(comuna),
+            "minsal_resultado": previo,
+        }
+
     try:
         resultado = buscar_turnos(comuna)
     except RuntimeError as e:
-        # Ni datos en vivo ni snapshot: se informa la falla, no se inventa.
         print(f"[minsal] {e}")
         return {
             "minsal_context": (
@@ -171,6 +190,8 @@ def tool_minsal_node(state: AssistantState) -> dict:
     return {
         "minsal_context": formatear_contexto(resultado),
         "minsal_sugerencias": resultado.get("comunas_sugeridas") or [],
+        "minsal_comuna_consultada": normalizar_texto(comuna),
+        "minsal_resultado": resultado,
     }
 
 def tool_rag_node(state: AssistantState) -> dict:
@@ -221,6 +242,12 @@ Reglas que no puedes romper:
 
 Responde en español de Chile, de forma breve y clara. La información del
 vademécum es referencial y educativa, no reemplaza indicación profesional.
+
+Habla como una persona, no como un sistema. Nunca menciones "el contexto",
+"la ficha entregada", "la fuente consultada" ni "mi base de datos": son
+detalles internos que al usuario no le sirven. Si un dato no lo tienes,
+dilo directo: "No tengo el teléfono de esa farmacia" en vez de "el
+contexto no informa el teléfono".
 """
 
 respuesta_llm = ChatOpenAI(model="gpt-5.6-luna")
