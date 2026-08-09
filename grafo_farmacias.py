@@ -17,6 +17,7 @@ from langgraph.graph.message import add_messages
 from pydantic import BaseModel, Field
 from tool_rag import recuperar_contexto
 from tool_minsal import buscar_turnos, formatear_contexto
+from guardrail_salida import revisar
 
 load_dotenv()
 
@@ -270,6 +271,23 @@ def response_node(state: AssistantState) -> dict:
             + ", ".join(sugerencias)
             + "."
         )
+
+    sugerencias = state.get("minsal_sugerencias") or []
+    if sugerencias:
+        texto += (
+            "\n\nComunas cercanas con turno vigente: "
+            + ", ".join(sugerencias)
+            + "."
+        )
+
+    # Segunda capa: inspección determinista de la respuesta ya generada.
+    # Se aplica al final, sobre el texto completo con citas y sugerencias
+    # incluidas, porque cualquiera de esas piezas podría arrastrar una
+    # dosis desde el contexto.
+    texto, hallazgos = revisar(texto)
+    if hallazgos:
+        print(f"[guardrail-salida] BLOQUEADO · hallazgos={hallazgos}")
+
     return {"messages": [AIMessage(content=texto)]}
 
 
