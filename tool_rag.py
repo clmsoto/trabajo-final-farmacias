@@ -89,6 +89,14 @@ def recuperar_contexto(consulta_es: str, k: int = 3) -> dict:
 
     pertinentes = [r for r in resultados if r["score"] >= UMBRAL]
 
+    # Si el primer resultado domina claramente, se cita solo ese: incluir
+    # fichas que el modelo no llegó a usar debilita la trazabilidad de la
+    # cita, que es justamente lo que la cita debería garantizar.
+    if len(pertinentes) > 1:
+        top, segundo = pertinentes[0]["score"], pertinentes[1]["score"]
+        if top - segundo > 0.10:
+            pertinentes = pertinentes[:1]
+
     if not pertinentes:
         return {
             "contexto": "",
@@ -110,7 +118,6 @@ def recuperar_contexto(consulta_es: str, k: int = 3) -> dict:
         "hay_resultados": True,
         "consulta_traducida": consulta_en,
     }
-
 
 if __name__ == "__main__":
     for consulta in [

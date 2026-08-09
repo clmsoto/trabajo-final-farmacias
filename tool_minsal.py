@@ -24,8 +24,10 @@ import time
 import unicodedata
 from datetime import date, datetime, time as dtime, timedelta
 from pathlib import Path
-
 import httpx
+
+from comunas_regiones import canonizar_region, region_de
+
 
 URL_TURNOS = "https://midas.minsal.cl/farmacia_v2/WS/getLocalesTurnos.php"
 TIMEOUT_S = 8.0
@@ -340,6 +342,95 @@ def buscar_turnos(comuna: str, momento: datetime | None = None) -> dict:
     }
 
 
+def buscar_turnos_region(region: str, momento: datetime | None = None) -> dict:
+    """
+    Turnos vigentes agrupados por comuna dentro de una región.
+
+    No se usa fk_region del endpoint: es un identificador interno que no
+    corresponde a la numeración oficial. La región se deriva del mapa
+    comuna→región mantenido en el proyecto.
+    """
+    momento = momento or datetime.now()
+    objetivo = canonizar_region(normalizar_texto(region))
+    if not objetivo:
+        return {"region_encontrada": False, "region": region, "comunas": {}}
+
+    crudos, origen = obtener_datos()
+    registros = [normalizar_registro(r) for r in crudos]
+    vigentes = filtrar_vigentes(registros, momento.date())
+
+    por_comuna: dict[str, list[dict]] = {}
+    for r in vigentes:
+        if region_de(r["comuna_norm"]) != objetivo:
+            continue
+        por_comuna.setdefault(r["comuna"], []).append(
+            {
+                "nombre": r["nombre"],
+                "direccion": r["direccion"],
+                "telefono": r["telefono"],
+                "horario": f"{r['apertura'][:5]} a {r['cierre'][:5]}",
+                "nocturno": cruza_medianoche(r["apertura"], r["cierre"]),
+                "abierta_ahora": esta_abierta(r, momento),
+            }
+        )
+
+    advertencia = None
+    if origen == "snapshot":
+        fechas = sorted({r["fecha"] for r in registros if r["fecha"]})
+        advertencia = (
+            f"Dato de respaldo capturado el {fechas[-1] if fechas else 'desconocida'}, "
+            "no consultado en vivo. Confirma el turno antes de trasladarte."
+        )
+
+    return {
+        "region_encontrada": True,
+        "region": objetivo,
+        "origen": origen,
+        "advertencia": advertencia,
+        "comunas": dict(sorted(por_comuna.items())),
+        "total_locales": sum(len(v) for v in por_comuna.values()),
+    }
+
+
+def formatear_contexto_region(resultado: dict) -> str:
+    """Texto para el modelo generador, agrupado por comuna."""
+    if not resultado["region_encontrada"]:
+        return (
+            f"No se reconoce '{resultado['region']}' como una región de Chile. "
+            "Pide al usuario que indique una comuna o una región válida."
+        )
+
+    if not resultado["comunas"]:
+        return (
+            f"No hay farmacias de turno vigentes registradas en la región "
+            f"{resultado['region']} en este momento."
+        )
+
+    lineas = []
+    if resultado["advertencia"]:
+        lineas.append(f"AVISO: {resultado['advertencia']}")
+
+    lineas.append(
+        f"Región {resultado['region']}: {resultado['total_locales']} "
+        f"farmacia(s) de turno en {len(resultado['comunas'])} comuna(s)."
+    )
+    for comuna, locales in resultado["comunas"].items():
+        for f in locales:
+            estado = {True: "abierta ahora", False: "cerrada ahora"}.get(
+                f["abierta_ahora"], "horario no verificable"
+            )
+            noct = " (nocturno)" if f["nocturno"] else ""
+            lineas.append(
+                f"- {comuna}: {f['nombre']}, {f['direccion']} · "
+                f"{f['horario']}{noct} · {estado}"
+            )
+
+    lineas.append(
+        "[Nota interna: agrupa por comuna. Al cerrar, ofrece ordenar por "
+        "cercanía si el usuario indica desde qué comuna consulta.]"
+    )
+    return "\n".join(lineas)
+
 def formatear_contexto(resultado: dict) -> str:
     """
     Convierte el resultado en texto para el modelo generador.
@@ -349,10 +440,10 @@ def formatear_contexto(resultado: dict) -> str:
     precio ni disponibilidad de medicamentos.
     """
     if not resultado["comuna_encontrada"]:
-        sugeridas = ", ".join(resultado["comunas_sugeridas"])
         return (
             "No hay farmacias de turno registradas para esa comuna en la "
-            f"fuente. Comunas con turno vigente, entre otras: {sugeridas}."
+            "fuente. [Nota interna: no listes comunas alternativas, se "
+            "adjuntan aparte automáticamente.]"
         )
 
     lineas = []

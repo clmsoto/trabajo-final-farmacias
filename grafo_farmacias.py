@@ -1,9 +1,15 @@
 """
-Grafo LangGraph del asistente de farmacias.
+Grafo LangGraph del asistente de farmacias de turno.
 Trabajo Final · Módulo 04 · Diplomado IA Generativa FEN.
 
-Cubre los criterios 2 (LangGraph + historial) y 3 (RAG con cita).
-Pendiente: tool_minsal_node sigue siendo un stub.
+Orquesta cuatro rutas según la intención detectada:
+  turno            → consulta MINSAL en vivo (por comuna o por región)
+  medicamento      → RAG semántico sobre el vademécum, con cita
+  rechazo          → guardrail clínico de entrada
+  fuera_de_dominio → consulta ajena al alcance del asistente
+
+Cubre los criterios 2 (LangGraph + historial), 3 (RAG semántico),
+4 (MINSAL en vivo) y 5 (seguridad, en dos capas).
 """
 
 from typing import Annotated, Literal, TypedDict
@@ -15,9 +21,16 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import BaseModel, Field
-from tool_rag import recuperar_contexto
-from tool_minsal import buscar_turnos, formatear_contexto, normalizar_texto
+
 from guardrail_salida import revisar
+from tool_minsal import (
+    buscar_turnos,
+    buscar_turnos_region,
+    formatear_contexto,
+    formatear_contexto_region,
+    normalizar_texto,
+)
+from tool_rag import recuperar_contexto
 
 load_dotenv()
 
@@ -37,12 +50,15 @@ class AssistantState(TypedDict):
     messages: Annotated[list[AnyMessage], add_messages]
     intent: INTENTS | None
     comuna: str | None
+    region: str | None
     minsal_context: str | None
-    rag_context: str | None
-    rag_citas: list | None
     minsal_sugerencias: list | None
+    # Estos dos NO se limpian entre turnos: son la memoria que permite
+    # responder un seguimiento sin volver a consultar la API.
     minsal_comuna_consultada: str | None
     minsal_resultado: dict | None
+    rag_context: str | None
+    rag_citas: list | None
 
 
 # ---------------------------------------------------------------------------
@@ -53,7 +69,8 @@ class AssistantState(TypedDict):
 class IntentClassification(BaseModel):
     intent: INTENTS = Field(
         description=(
-            "turno: pregunta por farmacias abiertas o de turno en una comuna. "
+            "turno: pregunta por farmacias abiertas o de turno en una comuna "
+            "o región. "
             "medicamento: pide informacion general de un medicamento o ficha, "
             "sin pedir dosis ni tratamiento. "
             "rechazo: pide diagnostico, dosis, tratamiento o recomendacion "
@@ -63,6 +80,13 @@ class IntentClassification(BaseModel):
     )
     comuna: str | None = Field(
         default=None, description="Comuna mencionada por el usuario, si aplica."
+    )
+    region: str | None = Field(
+        default=None,
+        description=(
+            "Región mencionada por el usuario, si la consulta es regional "
+            "y no de una comuna específica."
+        ),
     )
 
 
@@ -80,11 +104,13 @@ Si la consulta no trata de farmacias ni de medicamentos, clasifícala como
 "fuera_de_dominio". La preferencia por el rechazo aplica solo a consultas
 del dominio sanitario, no a temas ajenos.
 
+Si el usuario pregunta por una región completa ("¿hay farmacias de turno
+en la Región Metropolitana?"), pon el nombre en "region" y deja "comuna"
+vacía. Si menciona una comuna específica, usa "comuna".
+
 Usas el historial de la conversación para resolver referencias implícitas:
 si el usuario dice "¿y ahí?" o no repite la comuna, dedúcela de los
 mensajes anteriores.
-
-No uses formato markdown: responde en texto plano.
 """
 
 router_llm = ChatOpenAI(model="gpt-5.6-luna").with_structured_output(
@@ -100,16 +126,20 @@ router_llm = ChatOpenAI(model="gpt-5.6-luna").with_structured_output(
 def reset_node(state: AssistantState) -> dict:
     """
     Limpia el contexto recuperado del turno anterior.
+
     Sin esto, el estado persiste entre invocaciones del mismo thread y una
     respuesta puede citar fuentes que no se usaron en el turno actual.
     El historial (messages) NO se limpia: esa persistencia sí la queremos.
+    Tampoco se limpian minsal_resultado ni minsal_comuna_consultada: son
+    la caché que evita reconsultar la API en un turno de seguimiento.
     """
     return {
+        "intent": None,
+        "region": None,
+        "minsal_context": None,
+        "minsal_sugerencias": [],
         "rag_context": None,
         "rag_citas": [],
-        "minsal_context": None,
-        "intent": None,
-        "minsal_sugerencias": [],
     }
 
 
@@ -119,17 +149,31 @@ def router_node(state: AssistantState) -> dict:
     classification = router_llm.invoke(
         [("system", ROUTER_SYSTEM_PROMPT), *state["messages"]]
     )
-    print(f"[router] intent={classification.intent}, comuna={classification.comuna}")
+    print(
+        f"[router] intent={classification.intent}, "
+        f"comuna={classification.comuna}, region={classification.region}"
+    )
 
-    # La comuna solo se arrastra dentro de una conversación sobre turnos.
-    # Si el usuario cambió de tema, se descarta: conservarla haría que una
-    # consulta de turnos posterior use una comuna que ya no está en contexto.
     if classification.intent == "turno":
+        # La comuna se arrastra dentro de una conversación sobre turnos,
+        # para resolver seguimientos que no la repiten.
         comuna = classification.comuna or state.get("comuna")
+        region = classification.region
+        # Precedencia: si el usuario nombra una comuna en este turno, la
+        # consulta dejó de ser regional. Sin esto, la región extraída del
+        # historial seguiría mandando y la comuna nueva se ignoraría.
+        if classification.comuna:
+            region = None
     else:
-        comuna = None
+        # Al cambiar de tema, ambas se descartan: conservarlas haría que
+        # una consulta posterior use una ubicación fuera de contexto.
+        comuna, region = None, None
 
-    return {"intent": classification.intent, "comuna": comuna}
+    return {
+        "intent": classification.intent,
+        "comuna": comuna,
+        "region": region,
+    }
 
 
 def route_from_intent(state: AssistantState) -> str:
@@ -145,8 +189,16 @@ def route_from_intent(state: AssistantState) -> str:
 
 
 def tool_minsal_node(state: AssistantState) -> dict:
-    comuna = state.get("comuna")
+    # Consulta regional: el usuario pidió el panorama amplio.
+    region = state.get("region")
+    if region:
+        resultado = buscar_turnos_region(region)
+        return {
+            "minsal_context": formatear_contexto_region(resultado),
+            "minsal_sugerencias": [],
+        }
 
+    comuna = state.get("comuna")
     if not comuna:
         return {
             "minsal_context": (
@@ -156,15 +208,12 @@ def tool_minsal_node(state: AssistantState) -> dict:
             "minsal_sugerencias": [],
         }
 
-    # Si es la misma comuna del turno anterior, se reutiliza el resultado
-    # ya obtenido. Un seguimiento como "¿cuál es su dirección?" no
-    # necesita volver a consultar la API: los datos no cambiaron entre
-    # dos mensajes consecutivos, y reconsultar arriesga que el resultado
+    # Si es la misma comuna del turno anterior, se reutiliza el resultado.
+    # Un seguimiento como "¿cuál es su dirección?" no necesita reconsultar:
+    # los datos no cambiaron, y reconsultar arriesga que el resultado
     # difiera del que el usuario ya vio en pantalla.
     previo = state.get("minsal_resultado")
-    misma_comuna = (
-        state.get("minsal_comuna_consultada") == normalizar_texto(comuna)
-    )
+    misma_comuna = state.get("minsal_comuna_consultada") == normalizar_texto(comuna)
     if previo and misma_comuna:
         print(f"[minsal] Reutilizando resultado de {comuna} (turno previo)")
         return {
@@ -177,6 +226,7 @@ def tool_minsal_node(state: AssistantState) -> dict:
     try:
         resultado = buscar_turnos(comuna)
     except RuntimeError as e:
+        # Ni datos en vivo ni snapshot: se informa la falla, no se inventa.
         print(f"[minsal] {e}")
         return {
             "minsal_context": (
@@ -193,6 +243,7 @@ def tool_minsal_node(state: AssistantState) -> dict:
         "minsal_comuna_consultada": normalizar_texto(comuna),
         "minsal_resultado": resultado,
     }
+
 
 def tool_rag_node(state: AssistantState) -> dict:
     # TODO: la consulta usa solo el último mensaje. Una pregunta de
@@ -211,7 +262,7 @@ def tool_rag_node(state: AssistantState) -> dict:
 
 
 def guardrail_reject_node(state: AssistantState) -> dict:
-    # Rechaza y deriva, sin negarse a secas (ver criterio 5 de la rúbrica).
+    # Primera capa del criterio 5. Rechaza y deriva, sin negarse a secas.
     rechazo = (
         "No puedo recomendarte un medicamento ni una dosis; eso requiere "
         "evaluación profesional. Sí puedo ayudarte a encontrar una farmacia "
@@ -248,6 +299,8 @@ Habla como una persona, no como un sistema. Nunca menciones "el contexto",
 detalles internos que al usuario no le sirven. Si un dato no lo tienes,
 dilo directo: "No tengo el teléfono de esa farmacia" en vez de "el
 contexto no informa el teléfono".
+
+No uses formato markdown: responde en texto plano.
 """
 
 respuesta_llm = ChatOpenAI(model="gpt-5.6-luna")
@@ -281,6 +334,9 @@ def response_node(state: AssistantState) -> dict:
     )
 
     texto = r.content
+
+    # Las citas se adjuntan por código, no se dejan a criterio del modelo:
+    # son la trazabilidad de la evidencia, no una redacción.
     citas = state.get("rag_citas") or []
     if citas:
         fuentes = ", ".join(c["ficha"] for c in citas)
@@ -289,8 +345,9 @@ def response_node(state: AssistantState) -> dict:
             "(Comprehensive Drug Information Dataset)."
         )
 
-    # Las comunas alternativas se adjuntan por código, no se dejan a
-    # criterio del modelo: son un dato de la fuente, no una redacción.
+    # Ídem para las comunas alternativas. Por eso formatear_contexto no las
+    # incluye en el texto que ve el modelo: si llegaran por ambas vías, la
+    # respuesta las mostraría dos veces.
     sugerencias = state.get("minsal_sugerencias") or []
     if sugerencias:
         texto += (
@@ -299,18 +356,10 @@ def response_node(state: AssistantState) -> dict:
             + "."
         )
 
-    sugerencias = state.get("minsal_sugerencias") or []
-    if sugerencias:
-        texto += (
-            "\n\nComunas cercanas con turno vigente: "
-            + ", ".join(sugerencias)
-            + "."
-        )
-
-    # Segunda capa: inspección determinista de la respuesta ya generada.
-    # Se aplica al final, sobre el texto completo con citas y sugerencias
-    # incluidas, porque cualquiera de esas piezas podría arrastrar una
-    # dosis desde el contexto.
+    # Segunda capa del criterio 5: inspección determinista de la respuesta
+    # ya generada. Se aplica al final, sobre el texto completo con citas y
+    # sugerencias incluidas, porque cualquiera de esas piezas podría
+    # arrastrar una dosis desde el contexto.
     texto, hallazgos = revisar(texto)
     if hallazgos:
         print(f"[guardrail-salida] BLOQUEADO · hallazgos={hallazgos}")
@@ -350,6 +399,9 @@ graph.add_edge("guardrail_reject", END)
 graph.add_edge("fuera_de_dominio", END)
 graph.add_edge("responder", END)
 
+# MemorySaver vive en el proceso: al reiniciar se pierden los hilos.
+# Para persistencia real en la nube correspondería SqliteSaver sobre un
+# volumen montado.
 checkpointer = MemorySaver()
 app = graph.compile(checkpointer=checkpointer)
 
@@ -365,13 +417,15 @@ if __name__ == "__main__":
         # 1 y 2: historial. El segundo turno no menciona la comuna.
         "¿Hay una farmacia de turno en Recoleta?",
         "¿Cuál es su dirección?",
-        # 3: comuna sin turno vigente.
-        "¿Y en Providencia?",
-        # 4: ruta RAG con cita.
+        # 3: consulta regional.
+        "¿Y en la Región Metropolitana?",
+        # 4: comuna sin turno vigente, tras una regional (precedencia).
+        "Estoy en Peñalolén",
+        # 5: ruta RAG con cita.
         "¿Qué contraindicaciones tiene el ibuprofeno?",
-        # 5: guardrail clínico.
+        # 6: guardrail clínico.
         "¿Qué dosis de paracetamol le doy a mi hijo?",
-        # 6: fuera de dominio.
+        # 7: fuera de dominio.
         "¿Cuál es la capital de Francia?",
     ]
 

@@ -3,87 +3,254 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Farmacias de turno · Asistente</title>
+<title>Turno · Farmacias de turno en Chile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --fondo: #faf9f7;
-    --texto: #1c1b1a;
-    --tenue: #6b6866;
-    --borde: #e3e0dc;
-    --acento: #2d6a5a;
-    --burbuja-bot: #ffffff;
-    --burbuja-user: #2d6a5a;
+    --fondo:     #f2f1ee;
+    --superficie:#ffffff;
+    --elevada:   #e7e5e0;
+    --linea:     #d6d3cd;
+    --linea-alta:#b8b4ac;
+    --tinta:     #1f2224;
+    --tenue:     #6e7378;
+    --senal:     #4a6b5d;
+    --display: "Space Grotesk", sans-serif;
+    --cuerpo:  "Public Sans", system-ui, sans-serif;
+    --dato:    "IBM Plex Mono", monospace;
   }
   * { box-sizing: border-box; }
+  html, body { height: 100%; }
   body {
-    margin: 0; background: var(--fondo); color: var(--texto);
-    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
-    display: flex; justify-content: center; min-height: 100vh;
+    margin: 0; background: var(--fondo); color: var(--tinta);
+    font-family: var(--cuerpo); font-size: 15px; line-height: 1.6;
+    display: flex; justify-content: center;
+    -webkit-font-smoothing: antialiased;
   }
   .app {
-    width: 100%; max-width: 720px; display: flex; flex-direction: column;
-    height: 100vh; padding: 0 16px;
+    width: 100%; max-width: 660px; height: 100dvh;
+    display: flex; flex-direction: column; padding: 0 18px;
   }
-  header { padding: 20px 4px 14px; border-bottom: 1px solid var(--borde); }
-  h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
-  .sub { margin: 4px 0 0; font-size: 13px; color: var(--tenue); }
-  #chat { flex: 1; overflow-y: auto; padding: 18px 0; display: flex;
-          flex-direction: column; gap: 12px; }
-  .msg { max-width: 82%; padding: 11px 14px; border-radius: 14px;
-         white-space: pre-wrap; word-wrap: break-word; font-size: 15px; }
-  .bot { background: var(--burbuja-bot); border: 1px solid var(--borde);
-         align-self: flex-start; border-bottom-left-radius: 4px; }
-  .user { background: var(--burbuja-user); color: #fff;
-          align-self: flex-end; border-bottom-right-radius: 4px; }
-  .meta { font-size: 11px; color: var(--tenue); align-self: flex-start;
-          margin: -6px 0 0 4px; font-variant: small-caps; letter-spacing: 0.04em; }
-  form { display: flex; gap: 8px; padding: 12px 0 18px;
-         border-top: 1px solid var(--borde); }
+
+  /* ---- Cabecera ---- */
+  header { padding: 22px 2px 0; }
+  .marca { display: flex; align-items: baseline; gap: 10px; margin-bottom: 3px; }
+  h1 {
+    font-family: var(--display); font-weight: 700; font-size: 21px;
+    letter-spacing: -0.03em; margin: 0;
+  }
+  .cruz { width: 11px; height: 11px; position: relative; flex: none; align-self: center; }
+  .cruz::before, .cruz::after { content: ""; position: absolute; background: var(--senal); }
+  .cruz::before { left: 4px; top: 0; width: 3px; height: 11px; }
+  .cruz::after  { top: 4px; left: 0; height: 3px; width: 11px; }
+  .sub {
+    font-family: var(--dato); font-size: 11px; color: var(--tenue);
+    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px;
+  }
+
+  /* ---- Banda de 24 horas: el elemento firma ---- */
+  .banda { margin-bottom: 6px; }
+  .franja {
+    position: relative; height: 26px; background: var(--superficie);
+    border: 1px solid var(--linea); border-radius: 3px; overflow: hidden;
+  }
+  .tramo {
+    position: absolute; top: 0; bottom: 0;
+    background: var(--senal); opacity: 0.18;
+  }
+  .tick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--linea); }
+  .tick.mayor { background: var(--linea-alta); }
+  .ahora { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--tinta); }
+  .ahora::after {
+    content: ""; position: absolute; top: -3px; left: -2px;
+    width: 6px; height: 6px; background: var(--tinta); border-radius: 50%;
+  }
+  .escala {
+    display: flex; justify-content: space-between;
+    font-family: var(--dato); font-size: 10px; color: var(--tenue);
+    padding-top: 5px; letter-spacing: 0.04em;
+  }
+  .leyenda {
+    font-family: var(--dato); font-size: 10.5px; color: var(--tenue);
+    padding: 8px 0 14px; border-bottom: 1px solid var(--linea);
+    letter-spacing: 0.03em;
+  }
+  .leyenda strong { color: var(--senal); font-weight: 500; }
+
+  /* ---- Conversación ---- */
+  #chat {
+    flex: 1; overflow-y: auto; padding: 18px 0 8px;
+    display: flex; flex-direction: column; gap: 14px;
+    scrollbar-width: thin; scrollbar-color: var(--linea) transparent;
+  }
+  .msg { max-width: 86%; white-space: pre-wrap; word-wrap: break-word; }
+  .bot {
+    align-self: flex-start; background: var(--superficie);
+    border: 1px solid var(--linea); border-left: 2px solid var(--senal);
+    padding: 12px 15px; border-radius: 3px;
+  }
+  .user {
+    align-self: flex-end; background: var(--elevada);
+    padding: 10px 15px; border-radius: 3px;
+  }
+  .ruta {
+    align-self: flex-start; font-family: var(--dato); font-size: 10px;
+    color: var(--tenue); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-top: -9px; padding-left: 3px;
+  }
+  .puntos::after {
+    content: "···"; animation: latir 1.2s steps(1) infinite;
+    font-family: var(--dato); color: var(--tenue);
+  }
+  @keyframes latir { 0%,100% { opacity: .3 } 50% { opacity: 1 } }
+
+  /* ---- Entrada ---- */
+  form { display: flex; gap: 8px; padding: 12px 0 10px; border-top: 1px solid var(--linea); }
   input {
-    flex: 1; padding: 12px 14px; font-size: 15px; font-family: inherit;
-    border: 1px solid var(--borde); border-radius: 10px; background: #fff;
+    flex: 1; padding: 12px 14px; font-family: var(--cuerpo); font-size: 15px;
+    background: var(--superficie); border: 1px solid var(--linea);
+    border-radius: 3px; color: var(--tinta);
   }
-  input:focus { outline: 2px solid var(--acento); outline-offset: -1px; }
+  input::placeholder { color: #9a9e a2; }
+  input::placeholder { color: #9a9ea2; }
+  input:focus-visible, button:focus-visible {
+    outline: 2px solid var(--senal); outline-offset: 1px;
+  }
   button {
-    padding: 12px 20px; font-size: 15px; font-family: inherit; font-weight: 500;
-    border: none; border-radius: 10px; background: var(--acento);
-    color: #fff; cursor: pointer;
+    padding: 12px 18px; font-family: var(--display); font-weight: 500;
+    font-size: 14px; letter-spacing: 0.01em; border: 1px solid var(--senal);
+    border-radius: 3px; background: transparent; color: var(--senal);
+    cursor: pointer; transition: background .18s ease, color .18s ease;
   }
-  button:disabled { opacity: 0.5; cursor: default; }
-  .aviso { font-size: 12px; color: var(--tenue); padding: 0 4px 10px;
-           border-bottom: 1px solid var(--borde); }
+  button:hover:not(:disabled) { background: var(--senal); color: var(--superficie); }
+  button:disabled { opacity: .35; cursor: default; }
+  .pie { font-size: 11px; color: var(--tenue); padding-bottom: 14px; line-height: 1.5; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::after { animation: none !important; transition: none !important; }
+  }
+  @media (max-width: 480px) {
+    .msg { max-width: 92%; }
+    h1 { font-size: 19px; }
+  }
 </style>
 </head>
 <body>
 <div class="app">
+
   <header>
-    <h1>Farmacias de turno</h1>
-    <p class="sub">Asistente informativo · Datos MINSAL y vademécum referencial</p>
+    <div class="marca">
+      <span class="cruz" aria-hidden="true"></span>
+      <h1>Turno</h1>
+    </div>
+    <p class="sub">Farmacias de turno · Chile</p>
+
+    <!-- Banda de 24 h: marca la hora actual y, cuando hay resultado,
+         la ventana de apertura. Un turno nocturno se dibuja en dos
+         tramos porque cruza medianoche. -->
+    <div class="banda">
+      <div class="franja" id="franja" role="img"
+           aria-label="Línea de 24 horas con la hora actual marcada">
+        <div class="ahora" id="ahora"></div>
+      </div>
+      <div class="escala">
+        <span>00</span><span>06</span><span>12</span><span>18</span><span>24</span>
+      </div>
+    </div>
+    <p class="leyenda" id="leyenda">Hora actual <strong id="reloj">--:--</strong></p>
   </header>
-  <p class="aviso">
-    No entrega dosis, diagnósticos ni recomendaciones de tratamiento.
-    Ante una urgencia, consulta a un profesional de salud.
-  </p>
 
   <div id="chat"></div>
 
   <form id="form">
-    <input id="entrada" autocomplete="off" placeholder="¿Hay farmacia de turno en Recoleta?" required>
-    <button id="enviar" type="submit">Enviar</button>
+    <input id="entrada" autocomplete="off" required
+           placeholder="¿Hay farmacia de turno en Recoleta?"
+           aria-label="Escribe tu consulta">
+    <button id="enviar" type="submit">Consultar</button>
   </form>
+
+  <p class="pie">
+    Informa locales y turnos publicados por MINSAL, y fichas referenciales
+    de medicamentos. No indica dosis, tratamientos ni qué medicamento tomar.
+  </p>
 </div>
 
 <script>
-  // El user_id identifica el hilo de conversación en el servidor.
-  // Se genera uno por pestaña: no hay login, y el historial vive en el
-  // checkpointer del grafo, no en el navegador.
+(() => {
+  "use strict";
+
   const userId = "web_" + Math.random().toString(36).slice(2, 10);
-
-  const chat = document.getElementById("chat");
-  const form = document.getElementById("form");
+  const chat    = document.getElementById("chat");
+  const form    = document.getElementById("form");
   const entrada = document.getElementById("entrada");
-  const enviar = document.getElementById("enviar");
+  const enviar  = document.getElementById("enviar");
+  const franja  = document.getElementById("franja");
+  const marcaAhora = document.getElementById("ahora");
+  const leyenda = document.getElementById("leyenda");
+  const reloj   = document.getElementById("reloj");
 
+  // ---- Banda de 24 horas ----------------------------------------------
+  // Cada hora es una marca; las de 6 en 6 van más marcadas.
+  for (let h = 1; h < 24; h++) {
+    const t = document.createElement("div");
+    t.className = "tick" + (h % 6 === 0 ? " mayor" : "");
+    t.style.left = (h / 24 * 100) + "%";
+    franja.appendChild(t);
+  }
+
+  const aMinutos = (hhmm) => {
+    const [h, m] = hhmm.split(":").map(Number);
+    return h * 60 + m;
+  };
+
+  function ubicarAhora() {
+    const d = new Date();
+    const pct = (d.getHours() * 60 + d.getMinutes()) / 1440 * 100;
+    marcaAhora.style.left = pct + "%";
+    reloj.textContent = String(d.getHours()).padStart(2, "0") + ":" +
+                        String(d.getMinutes()).padStart(2, "0");
+  }
+  ubicarAhora();
+  setInterval(ubicarAhora, 30000);
+
+  function limpiarTramos() {
+    franja.querySelectorAll(".tramo").forEach(el => el.remove());
+  }
+
+  function pintarTramo(desdeMin, hastaMin) {
+    const el = document.createElement("div");
+    el.className = "tramo";
+    el.style.left  = (desdeMin / 1440 * 100) + "%";
+    el.style.width = ((hastaMin - desdeMin) / 1440 * 100) + "%";
+    franja.insertBefore(el, franja.firstChild);
+  }
+
+  // Si la respuesta menciona un horario, se dibuja sobre la banda.
+  // Un turno que cruza medianoche se pinta en dos tramos: eso es lo que
+  // significa "cierra al día siguiente", visto en la línea de tiempo.
+  function dibujarHorario(texto) {
+    const m = texto.match(/(\d{2}:\d{2})\s*a\s*(\d{2}:\d{2})/);
+    limpiarTramos();
+    if (!m) {
+      leyenda.innerHTML = 'Hora actual <strong id="reloj">' +
+                          reloj.textContent + '</strong>';
+      return;
+    }
+    const ini = aMinutos(m[1]), fin = aMinutos(m[2]);
+    if (fin < ini) {                 // cruza medianoche
+      pintarTramo(ini, 1440);
+      pintarTramo(0, fin);
+      leyenda.innerHTML = 'Turno nocturno <strong>' + m[1] + ' → ' + m[2] +
+                          '</strong> del día siguiente';
+    } else {
+      pintarTramo(ini, fin);
+      leyenda.innerHTML = 'Turno <strong>' + m[1] + ' → ' + m[2] + '</strong>';
+    }
+  }
+
+  // ---- Conversación ----------------------------------------------------
   function burbuja(texto, clase) {
     const div = document.createElement("div");
     div.className = "msg " + clase;
@@ -93,17 +260,17 @@
     return div;
   }
 
-  function etiqueta(texto) {
+  function ruta(nombre) {
     const div = document.createElement("div");
-    div.className = "meta";
-    div.textContent = texto;
+    div.className = "ruta";
+    div.textContent = "ruta · " + nombre;
     chat.appendChild(div);
     chat.scrollTop = chat.scrollHeight;
   }
 
   burbuja(
-    "Hola. Puedo ayudarte a encontrar farmacias de turno por comuna y " +
-    "explicarte fichas referenciales de medicamentos.",
+    "Hola. Dime tu comuna y busco las farmacias de turno. " +
+    "También puedo contarte sobre un medicamento en particular.",
     "bot"
   );
 
@@ -115,7 +282,9 @@
     burbuja(texto, "user");
     entrada.value = "";
     enviar.disabled = true;
-    const pensando = burbuja("…", "bot");
+
+    const esperando = burbuja("", "bot");
+    esperando.classList.add("puntos");
 
     try {
       const r = await fetch("/chat", {
@@ -123,21 +292,23 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId, mensaje: texto })
       });
-
       if (!r.ok) throw new Error("HTTP " + r.status);
 
       const data = await r.json();
-      pensando.textContent = data.respuesta;
-      // La ruta tomada se muestra como evidencia del enrutamiento del grafo.
-      if (data.intent) etiqueta("ruta: " + data.intent);
+      esperando.classList.remove("puntos");
+      esperando.textContent = data.respuesta;
+      if (data.intent) ruta(data.intent);
+      dibujarHorario(data.respuesta);
     } catch (err) {
-      pensando.textContent =
-        "No se pudo obtener respuesta. Intenta nuevamente en unos momentos.";
+      esperando.classList.remove("puntos");
+      esperando.textContent =
+        "No hubo respuesta del servidor. Vuelve a intentarlo en unos momentos.";
     } finally {
       enviar.disabled = false;
       entrada.focus();
     }
   });
+})();
 </script>
 </body>
 </html>
