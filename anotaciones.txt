@@ -1,0 +1,79 @@
+PS C:\trabajo-final-farmacias> poetry run python test_idioma.py
+
+======================================================================
+CONSULTA: ¿Para qué sirve la aspirina?
+
+  [ES directo]
+    0.5146  Drug Name: Aspirin
+    0.364  Drug Name: Ibuprofen
+    0.3558  Drug Name: Naproxen
+
+  [EN traducido] -> What is aspirin used for?
+    0.5599  Drug Name: Aspirin
+    0.3799  Drug Name: Ibuprofen
+    0.3726  Drug Name: Naproxen
+
+======================================================================
+CONSULTA: ¿Qué efectos secundarios tiene un antibiótico?
+
+  [ES directo]
+    0.4309  Drug Name: Amoxicillin-Clavulanate
+    0.4274  Drug Name: Amoxicillin
+    0.4272  Drug Name: Amoxicillin
+
+  [EN traducido] -> What side effects does an antibiotic have?
+    0.4914  Drug Name: Amoxicillin
+    0.4914  Drug Name: Amoxicillin
+    0.4914  Drug Name: Amoxicillin
+
+======================================================================
+CONSULTA: medicamento para la presión alta
+
+  [ES directo]
+    0.4221  Drug Name: Hydrochlorothiazide / Lisinopril
+    0.422  Drug Name: Hydrochlorothiazide / Lisinopril
+    0.4206  Drug Name: Enalapril
+
+  [EN traducido] -> Medication for high blood pressure
+    0.5102  Drug Name: Hydrochlorothiazide / Lisinopril
+    0.5102  Drug Name: Hydrochlorothiazide / Lisinopril
+    0.4996  Drug Name: Metoprolol
+
+======================================================================
+CONSULTA: ¿Qué contraindicaciones tiene el ibuprofeno?
+
+  [ES directo]
+    0.4956  Drug Name: Ibuprofen
+    0.3652  Drug Name: Naproxen
+    0.3405  Drug Name: Aspirin
+
+  [EN traducido] -> What contraindications does ibuprofen have?
+    0.5559  Drug Name: Ibuprofen
+    0.4201  Drug Name: Naproxen
+    0.3795  Drug Name: Aspirin
+
+
+PS C:\trabajo-final-farmacias> poetry run python -c "import pandas as pd; df = pd.read_csv('data/DrugData.csv'); print(df['Drug Name'].value_counts().head(10))"
+Drug Name
+Levothyroxine                          8
+Simvastatin                            8
+Ranitidine                             7
+Quetiapine                             7
+Prednisone                             7
+Fluticasone Propionate / Salmeterol    7
+Lisinopril                             6
+Albuterol                              6
+Omeprazole                             6
+Citalopram                             6
+Name: count, dtype: int64
+PS C:\trabajo-final-farmacias> poetry run python -c "import pandas as pd; df = pd.read_csv('data/DrugData.csv'); sub = df[df['Drug Name']=='Levothyroxine']; print(sub[['Drug Name','Strength','Dosage Form','Indications','Side Effects']].to_string())"
+         Drug Name Strength Dosage Form       Indications Side Effects
+5    Levothyroxine   50 mcg      Tablet  Thyroid Disorder    Dizziness
+68   Levothyroxine   75 mcg      Tablet    Hypothyroidism       Tremor
+100  Levothyroxine  100 mcg      Tablet    Hypothyroidism       Tremor
+116  Levothyroxine  125 mcg      Tablet    Hypothyroidism       Tremor
+141  Levothyroxine  150 mcg      Tablet    Hypothyroidism       Tremor
+166  Levothyroxine   75 mcg      Tablet    Hypothyroidism       Tremor
+191  Levothyroxine  100 mcg      Tablet    Hypothyroidism       Tremor
+200  Levothyroxine  125 mcg      Tablet    Hypothyroidism       Tremor
+PS C:\trabajo-final-farmacias>

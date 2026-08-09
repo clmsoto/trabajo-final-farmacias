@@ -94,29 +94,59 @@ def main() -> None:
     if len(df) < antes:
         print(f"Descartadas {antes - len(df)} filas sin 'Drug Name'.")
 
-    textos = [construir_texto(fila) for _, fila in df.iterrows()]
+    # Deduplicación por texto embebido.
+    # Los 11 campos farmacológicos son idénticos entre presentaciones del
+    # mismo medicamento; solo varían Strength, Price, NDC y Approval Date.
+    # Sin deduplicar, una consulta gastaría el top-k en vectores idénticos.
+    #
+    # Los campos que varían se guardan como lista de OBJETOS (un objeto por
+    # registro original), no como listas paralelas: así se conserva qué
+    # precio y qué NDC corresponden a cada concentración. Con listas
+    # paralelas esa correspondencia se pierde al deduplicar cada campo
+    # por separado.
+    CAMPOS_REGISTRO = ["Strength", "Dosage Form", "Price", "NDC",
+                       "Manufacturer", "Approval Date"]
+    CAMPOS_FIJOS = ["Availability", "Storage Conditions"]
+
+    def limpiar(valor):
+        return None if pd.isna(valor) else str(valor).strip()
+
+    fichas: dict[str, dict] = {}
+    for _, fila in df.iterrows():
+        texto = construir_texto(fila)
+        if texto not in fichas:
+            payload = {"texto": texto, "presentaciones": []}
+            for campo in CAMPOS_FIJOS:
+                payload[campo] = limpiar(fila.get(campo))
+            fichas[texto] = payload
+
+        # Un objeto por registro original del CSV.
+        registro = {campo: limpiar(fila.get(campo)) for campo in CAMPOS_REGISTRO}
+        registro["drug_id"] = limpiar(fila.get("Drug ID"))
+        fichas[texto]["presentaciones"].append(registro)
+
+    # n_registros queda derivado, no duplicado como campo aparte.
+    for ficha in fichas.values():
+        ficha["n_registros"] = len(ficha["presentaciones"])
+
+    print(f"Fichas únicas tras deduplicar: {len(fichas)} (desde {len(df)} filas)")
+    textos = list(fichas.keys())
 
     # Procesamos en lotes para no exceder límites de la API de embeddings.
     LOTE = 50
     total = 0
-    for i in range(0, len(df), LOTE):
-        sub_df = df.iloc[i : i + LOTE]
+    for i in range(0, len(textos), LOTE):
         sub_textos = textos[i : i + LOTE]
         vectores = embeber(sub_textos)
 
-        puntos = []
-        for (_, fila), texto, vector in zip(sub_df.iterrows(), sub_textos, vectores):
-            payload = {"texto": texto}
-            for campo in CAMPOS_PAYLOAD:
-                valor = fila.get(campo)
-                payload[campo] = None if pd.isna(valor) else str(valor)
-            puntos.append(
-                {"id": str(uuid.uuid4()), "vector": vector, "payload": payload}
-            )
+        puntos = [
+            {"id": str(uuid.uuid4()), "vector": vector, "payload": fichas[texto]}
+            for texto, vector in zip(sub_textos, vectores)
+        ]
 
         subir_puntos(puntos)
         total += len(puntos)
-        print(f"Subidos {total}/{len(df)} puntos.")
+        print(f"Subidos {total}/{len(textos)} puntos.")
 
     # Verificación final contra el servidor.
     r = httpx.get(f"{QDRANT_URL}/collections/{COLLECTION}", headers=HEADERS, timeout=30)

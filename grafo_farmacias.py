@@ -70,7 +70,7 @@ si el usuario dice "¿y ahí?" o no repite la comuna, dedúcela de los
 mensajes anteriores.
 """
 
-router_llm = ChatOpenAI(model="gpt-5.6-luna", temperature=0).with_structured_output(
+router_llm = ChatOpenAI(model="gpt-5.6-luna").with_structured_output(
     IntentClassification
 )
 
