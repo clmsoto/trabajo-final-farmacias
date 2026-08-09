@@ -1,0 +1,23 @@
+[project]
+name = "trabajo-final-farmacias"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Mariano Soto",email = "mariano.soto@gmail.com"}
+]
+requires-python = "^3.11"
+dependencies = [
+    "langgraph (>=1.2.10,<2.0.0)",
+    "langchain-openai (>=1.4.2,<2.0.0)",
+    "langgraph-checkpoint-sqlite (>=3.1.1,<4.0.0)",
+    "qdrant-client (>=1.19.0,<2.0.0)",
+    "fastapi (>=0.141.1,<0.142.0)",
+    "uvicorn (>=0.52.1,<0.53.0)",
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "pydantic (>=2.13.4,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
