@@ -15,8 +15,8 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import BaseModel, Field
-
 from tool_rag import recuperar_contexto
+from tool_minsal import buscar_turnos, formatear_contexto
 
 load_dotenv()
 
@@ -39,6 +39,7 @@ class AssistantState(TypedDict):
     minsal_context: str | None
     rag_context: str | None
     rag_citas: list | None
+    minsal_sugerencias: list | None
 
 
 # ---------------------------------------------------------------------------
@@ -79,6 +80,8 @@ del dominio sanitario, no a temas ajenos.
 Usas el historial de la conversación para resolver referencias implícitas:
 si el usuario dice "¿y ahí?" o no repite la comuna, dedúcela de los
 mensajes anteriores.
+
+No uses formato markdown: responde en texto plano.
 """
 
 router_llm = ChatOpenAI(model="gpt-5.6-luna").with_structured_output(
@@ -103,6 +106,7 @@ def reset_node(state: AssistantState) -> dict:
         "rag_citas": [],
         "minsal_context": None,
         "intent": None,
+        "minsal_sugerencias": [],
     }
 
 
@@ -138,9 +142,35 @@ def route_from_intent(state: AssistantState) -> str:
 
 
 def tool_minsal_node(state: AssistantState) -> dict:
-    # TODO: llamar getLocalesTurnos.php, filtrar por comuna, timeout + cache.
-    return {"minsal_context": f"PENDIENTE: turnos para comuna={state.get('comuna')}"}
+    comuna = state.get("comuna")
 
+    if not comuna:
+        return {
+            "minsal_context": (
+                "El usuario no indicó comuna. Pídele que la especifique "
+                "para poder buscar farmacias de turno."
+            ),
+            "minsal_sugerencias": [],
+        }
+
+    try:
+        resultado = buscar_turnos(comuna)
+    except RuntimeError as e:
+        # Ni datos en vivo ni snapshot: se informa la falla, no se inventa.
+        print(f"[minsal] {e}")
+        return {
+            "minsal_context": (
+                "El servicio de farmacias de turno no está disponible en "
+                "este momento y no hay datos de respaldo. Informa al usuario "
+                "que intente más tarde."
+            ),
+            "minsal_sugerencias": [],
+        }
+
+    return {
+        "minsal_context": formatear_contexto(resultado),
+        "minsal_sugerencias": resultado.get("comunas_sugeridas") or [],
+    }
 
 def tool_rag_node(state: AssistantState) -> dict:
     # TODO: la consulta usa solo el último mensaje. Una pregunta de
@@ -231,6 +261,15 @@ def response_node(state: AssistantState) -> dict:
             "(Comprehensive Drug Information Dataset)."
         )
 
+    # Las comunas alternativas se adjuntan por código, no se dejan a
+    # criterio del modelo: son un dato de la fuente, no una redacción.
+    sugerencias = state.get("minsal_sugerencias") or []
+    if sugerencias:
+        texto += (
+            "\n\nComunas cercanas con turno vigente: "
+            + ", ".join(sugerencias)
+            + "."
+        )
     return {"messages": [AIMessage(content=texto)]}
 
 
@@ -279,13 +318,15 @@ if __name__ == "__main__":
 
     pruebas = [
         # 1 y 2: historial. El segundo turno no menciona la comuna.
-        "¿Hay una farmacia de turno en Providencia?",
-        "¿Y cuál queda más cerca del metro?",
-        # 3: ruta RAG con cita.
+        "¿Hay una farmacia de turno en Recoleta?",
+        "¿Cuál es su dirección?",
+        # 3: comuna sin turno vigente.
+        "¿Y en Providencia?",
+        # 4: ruta RAG con cita.
         "¿Qué contraindicaciones tiene el ibuprofeno?",
-        # 4: guardrail clínico.
+        # 5: guardrail clínico.
         "¿Qué dosis de paracetamol le doy a mi hijo?",
-        # 5: fuera de dominio (no debe dar el mensaje de rechazo clínico).
+        # 6: fuera de dominio.
         "¿Cuál es la capital de Francia?",
     ]
 
