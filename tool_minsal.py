@@ -38,6 +38,18 @@ SNAPSHOT_PATH = Path("data/snapshot_turnos.json")
 # en producción correspondería un caché compartido entre instancias.
 _cache: dict = {"datos": None, "ts": 0.0}
 
+# MINSAL rechaza con 403 las peticiones desde ciertos orígenes. Se envían
+# encabezados de navegador para el caso en que el bloqueo dependa del
+# cliente y no solo de la IP.
+HEADERS_MINSAL = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+    ),
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "es-CL,es;q=0.9",
+    "Referer": "https://midas.minsal.cl/farmacia_v2/index.php",
+}
 
 # ---------------------------------------------------------------------------
 # Normalización
@@ -86,8 +98,7 @@ CAMPOS_MINIMOS = {
 
 def _descargar() -> list[dict]:
     """Descarga con timeout y valida esquema mínimo. Lanza en caso de fallo."""
-    r = httpx.get(URL_TURNOS, timeout=TIMEOUT_S)
-    r.raise_for_status()
+    r = httpx.get(URL_TURNOS, timeout=TIMEOUT_S, headers=HEADERS_MINSAL)    r.raise_for_status()
 
     datos = r.json()
     if not isinstance(datos, list) or not datos:

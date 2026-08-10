@@ -1,0 +1,29 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	reset(reset)
+	router(router)
+	tool_minsal(tool_minsal)
+	tool_rag(tool_rag)
+	guardrail_reject(guardrail_reject)
+	fuera_de_dominio(fuera_de_dominio)
+	responder(responder)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> reset;
+	reset --> router;
+	router -.-> fuera_de_dominio;
+	router -.-> guardrail_reject;
+	router -.-> tool_minsal;
+	router -.-> tool_rag;
+	tool_minsal --> responder;
+	tool_rag --> responder;
+	fuera_de_dominio --> __end__;
+	guardrail_reject --> __end__;
+	responder --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
