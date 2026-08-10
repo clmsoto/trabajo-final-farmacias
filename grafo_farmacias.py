@@ -59,6 +59,7 @@ class AssistantState(TypedDict):
     minsal_resultado: dict | None
     rag_context: str | None
     rag_citas: list | None
+    minsal_advertencia: str | None
 
 
 # ---------------------------------------------------------------------------
@@ -140,6 +141,7 @@ def reset_node(state: AssistantState) -> dict:
         "minsal_sugerencias": [],
         "rag_context": None,
         "rag_citas": [],
+        "minsal_advertencia": None,
     }
 
 
@@ -189,13 +191,15 @@ def route_from_intent(state: AssistantState) -> str:
 
 
 def tool_minsal_node(state: AssistantState) -> dict:
-    # Consulta regional: el usuario pidió el panorama amplio.
+    # Consulta regional: tiene prioridad sobre la comuna, porque el usuario
+    # pidió explícitamente el panorama amplio.
     region = state.get("region")
     if region:
         resultado = buscar_turnos_region(region)
         return {
             "minsal_context": formatear_contexto_region(resultado),
             "minsal_sugerencias": [],
+            "minsal_advertencia": resultado.get("advertencia"),
         }
 
     comuna = state.get("comuna")
@@ -206,12 +210,12 @@ def tool_minsal_node(state: AssistantState) -> dict:
                 "para poder buscar farmacias de turno."
             ),
             "minsal_sugerencias": [],
+            "minsal_advertencia": None,
         }
 
     # Si es la misma comuna del turno anterior, se reutiliza el resultado.
-    # Un seguimiento como "¿cuál es su dirección?" no necesita reconsultar:
-    # los datos no cambiaron, y reconsultar arriesga que el resultado
-    # difiera del que el usuario ya vio en pantalla.
+    # La advertencia se propaga igual: si el dato vino del respaldo, el
+    # seguimiento debe seguir rotulándolo.
     previo = state.get("minsal_resultado")
     misma_comuna = state.get("minsal_comuna_consultada") == normalizar_texto(comuna)
     if previo and misma_comuna:
@@ -219,6 +223,7 @@ def tool_minsal_node(state: AssistantState) -> dict:
         return {
             "minsal_context": formatear_contexto(previo),
             "minsal_sugerencias": previo.get("comunas_sugeridas") or [],
+            "minsal_advertencia": previo.get("advertencia"),
             "minsal_comuna_consultada": normalizar_texto(comuna),
             "minsal_resultado": previo,
         }
@@ -226,7 +231,7 @@ def tool_minsal_node(state: AssistantState) -> dict:
     try:
         resultado = buscar_turnos(comuna)
     except RuntimeError as e:
-        # Ni datos en vivo ni snapshot: se informa la falla, no se inventa.
+        # Ni datos en vivo ni respaldo: se informa la falla, no se inventa.
         print(f"[minsal] {e}")
         return {
             "minsal_context": (
@@ -235,11 +240,13 @@ def tool_minsal_node(state: AssistantState) -> dict:
                 "que intente más tarde."
             ),
             "minsal_sugerencias": [],
+            "minsal_advertencia": None,
         }
 
     return {
         "minsal_context": formatear_contexto(resultado),
         "minsal_sugerencias": resultado.get("comunas_sugeridas") or [],
+        "minsal_advertencia": resultado.get("advertencia"),
         "minsal_comuna_consultada": normalizar_texto(comuna),
         "minsal_resultado": resultado,
     }
@@ -356,16 +363,24 @@ def response_node(state: AssistantState) -> dict:
             + "."
         )
 
+    # El aviso de respaldo se antepone por código para conservar la fecha
+    # de captura exacta: cuando viajaba en el contexto, el modelo lo
+    # parafraseaba y perdía la fecha, que es justo lo que permite al
+    # usuario juzgar qué tan viejo es el dato. Va al inicio porque
+    # condiciona todo lo que sigue.
+    advertencia = state.get("minsal_advertencia")
+    if advertencia:
+        texto = f"⚠ {advertencia}\n\n{texto}"
+
     # Segunda capa del criterio 5: inspección determinista de la respuesta
-    # ya generada. Se aplica al final, sobre el texto completo con citas y
-    # sugerencias incluidas, porque cualquiera de esas piezas podría
-    # arrastrar una dosis desde el contexto.
+    # ya generada. Se aplica al final, sobre el texto completo con citas,
+    # sugerencias y aviso incluidos, porque cualquiera de esas piezas
+    # podría arrastrar una dosis desde el contexto.
     texto, hallazgos = revisar(texto)
     if hallazgos:
         print(f"[guardrail-salida] BLOQUEADO · hallazgos={hallazgos}")
 
     return {"messages": [AIMessage(content=texto)]}
-
 
 # ---------------------------------------------------------------------------
 # 4. Construcción del grafo

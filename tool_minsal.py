@@ -414,23 +414,17 @@ def formatear_contexto_region(resultado: dict) -> str:
             "Pide al usuario que indique una comuna o una región válida."
         )
 
-    # El aviso de respaldo se antepone en todas las ramas: el compromiso
-    # es rotular SIEMPRE el origen del dato, no solo cuando hay farmacias
-    # que informar. Se usa .get() porque la rama de región no reconocida
-    # retorna un diccionario sin esa clave.
-    advertencia = resultado.get("advertencia")
-    aviso = f"AVISO: {advertencia}\n" if advertencia else ""
-
+    # El aviso de respaldo NO se incluye acá: se adjunta por código en
+    # response_node, para que conserve la fecha de captura exacta. En el
+    # contexto, el modelo lo parafraseaba y perdía la fecha, que es lo
+    # que permite al usuario juzgar qué tan viejo es el dato.
     if not resultado["comunas"]:
         return (
-            aviso +
             f"No hay farmacias de turno vigentes registradas en la región "
             f"{resultado['region']} en este momento."
         )
 
     lineas = []
-    if advertencia:
-        lineas.append(f"AVISO: {advertencia}")
 
     lineas.append(
         f"Región {resultado['region']}: {resultado['total_locales']} "
@@ -461,21 +455,8 @@ def formatear_contexto(resultado: dict) -> str:
     Cada dato entregado es uno que la fuente respalda; no se infiere stock,
     precio ni disponibilidad de medicamentos.
     """
-    if not resultado["comuna_encontrada"]:
-        # La advertencia de respaldo debe aparecer también acá: el
-        # compromiso es rotular SIEMPRE el origen, no solo cuando hay
-        # farmacias que informar.
-        aviso = f"AVISO: {resultado['advertencia']}\n" if resultado["advertencia"] else ""
-        return (
-            aviso +
-            "No hay farmacias de turno registradas para esa comuna en la "
-            "fuente. [Nota interna: no listes comunas alternativas, se "
-            "adjuntan aparte automáticamente.]"
-        )
 
     lineas = []
-    if resultado["advertencia"]:
-        lineas.append(f"AVISO: {resultado['advertencia']}")
 
     for f in resultado["farmacias"]:
         estado = {True: "abierta ahora", False: "cerrada ahora"}.get(
