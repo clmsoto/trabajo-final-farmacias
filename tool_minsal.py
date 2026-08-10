@@ -98,7 +98,8 @@ CAMPOS_MINIMOS = {
 
 def _descargar() -> list[dict]:
     """Descarga con timeout y valida esquema mínimo. Lanza en caso de fallo."""
-    r = httpx.get(URL_TURNOS, timeout=TIMEOUT_S, headers=HEADERS_MINSAL)    r.raise_for_status()
+    r = httpx.get(URL_TURNOS, timeout=TIMEOUT_S, headers=HEADERS_MINSAL)    
+    r.raise_for_status()
 
     datos = r.json()
     if not isinstance(datos, list) or not datos:
