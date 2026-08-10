@@ -100,7 +100,15 @@ CAMPOS_MINIMOS = {
 
 def _descargar() -> list[dict]:
     """Descarga con timeout y valida esquema mínimo. Lanza en caso de fallo."""
-    r = httpx.get(URL_TURNOS, timeout=TIMEOUT_S, headers=HEADERS_MINSAL)    
+    r = httpx.get(URL_TURNOS, timeout=TIMEOUT_S, headers=HEADERS_MINSAL)
+
+    if r.status_code == 403:
+        # El cuerpo y los encabezados del 403 pueden identificar la causa
+        # del bloqueo (política geográfica, WAF, límite de tasa).
+        print(f"[minsal] 403 · server={r.headers.get('server')} "
+              f"cf-ray={r.headers.get('cf-ray')}")
+        print(f"[minsal] 403 · body={r.text[:400]}")
+
     r.raise_for_status()
 
     datos = r.json()
