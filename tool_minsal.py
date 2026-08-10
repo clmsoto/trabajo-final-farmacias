@@ -414,15 +414,23 @@ def formatear_contexto_region(resultado: dict) -> str:
             "Pide al usuario que indique una comuna o una región válida."
         )
 
+    # El aviso de respaldo se antepone en todas las ramas: el compromiso
+    # es rotular SIEMPRE el origen del dato, no solo cuando hay farmacias
+    # que informar. Se usa .get() porque la rama de región no reconocida
+    # retorna un diccionario sin esa clave.
+    advertencia = resultado.get("advertencia")
+    aviso = f"AVISO: {advertencia}\n" if advertencia else ""
+
     if not resultado["comunas"]:
         return (
+            aviso +
             f"No hay farmacias de turno vigentes registradas en la región "
             f"{resultado['region']} en este momento."
         )
 
     lineas = []
-    if resultado["advertencia"]:
-        lineas.append(f"AVISO: {resultado['advertencia']}")
+    if advertencia:
+        lineas.append(f"AVISO: {advertencia}")
 
     lineas.append(
         f"Región {resultado['region']}: {resultado['total_locales']} "
@@ -454,7 +462,12 @@ def formatear_contexto(resultado: dict) -> str:
     precio ni disponibilidad de medicamentos.
     """
     if not resultado["comuna_encontrada"]:
+        # La advertencia de respaldo debe aparecer también acá: el
+        # compromiso es rotular SIEMPRE el origen, no solo cuando hay
+        # farmacias que informar.
+        aviso = f"AVISO: {resultado['advertencia']}\n" if resultado["advertencia"] else ""
         return (
+            aviso +
             "No hay farmacias de turno registradas para esa comuna en la "
             "fuente. [Nota interna: no listes comunas alternativas, se "
             "adjuntan aparte automáticamente.]"
