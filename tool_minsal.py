@@ -34,13 +34,11 @@ TIMEOUT_S = 8.0
 CACHE_TTL_S = 300  # 5 minutos: los turnos no cambian en el intradía
 SNAPSHOT_PATH = Path("data/snapshot_turnos.json")
 
-# Caché en memoria del proceso. Suficiente para el alcance del proyecto;
-# en producción correspondería un caché compartido entre instancias.
-_cache: dict = {"datos": None, "ts": 0.0}
-
-# MINSAL rechaza con 403 las peticiones desde ciertos orígenes. Se envían
-# encabezados de navegador para el caso en que el bloqueo dependa del
-# cliente y no solo de la IP.
+# MINSAL responde 403 a las peticiones desde rangos de datacenter: el
+# endpoint funciona desde una IP chilena y no desde el proveedor de
+# despliegue. Estos encabezados se probaron para descartar que el
+# bloqueo dependiera del cliente; no lo resuelven, y se conservan
+# porque tampoco estorban.
 HEADERS_MINSAL = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -50,6 +48,10 @@ HEADERS_MINSAL = {
     "Accept-Language": "es-CL,es;q=0.9",
     "Referer": "https://midas.minsal.cl/farmacia_v2/index.php",
 }
+
+# Caché en memoria del proceso. Suficiente para el alcance del proyecto;
+# en producción correspondería un caché compartido entre instancias.
+_cache: dict = {"datos": None, "ts": 0.0}
 
 # ---------------------------------------------------------------------------
 # Normalización

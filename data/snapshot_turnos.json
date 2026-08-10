@@ -1,54 +1,54 @@
 [
   {
-    "fecha": "2026-08-08",
-    "local_id": "23",
+    "fecha": "2026-08-09",
+    "local_id": "2",
     "fk_region": "6",
     "fk_comuna": "56",
     "fk_localidad": "12",
-    "local_nombre": "SAN NICOLAS",
+    "local_nombre": "CRUZ VERDE",
     "comuna_nombre": "LA CALERA",
     "localidad_nombre": "LA CALERA",
-    "local_direccion": "CALLE J.J. PEREZ 396",
+    "local_direccion": "AVENIDA JJ PEREZ 202",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "2229552",
-    "local_lat": "-32.7862634",
-    "local_lng": "-71.1901642",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "2724714",
+    "local_lat": "-32.788023",
+    "local_lng": "-71.189784",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "29",
+    "fecha": "2026-08-09",
+    "local_id": "31",
     "fk_region": "6",
     "fk_comuna": "69",
     "fk_localidad": "32",
-    "local_nombre": "ECOFARMACIAS",
+    "local_nombre": "DR. SIMI",
     "comuna_nombre": "QUILLOTA",
     "localidad_nombre": "QUILLOTA",
-    "local_direccion": "CALLE O´HIGGINS 176",
+    "local_direccion": "CALLE O´HIGGINS 186",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "2342235",
-    "local_lat": "-32.8791294",
-    "local_lng": "-71.2471894",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "998377934",
+    "local_lat": "-32.8790642414584",
+    "local_lng": "-71.2467373690042",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "63",
+    "fecha": "2026-08-09",
+    "local_id": "67",
     "fk_region": "6",
     "fk_comuna": "71",
     "fk_localidad": "34",
-    "local_nombre": "CRUZ VERDE",
+    "local_nombre": "DR. SIMI",
     "comuna_nombre": "QUINTERO",
     "localidad_nombre": "QUINTERO",
-    "local_direccion": "CABO ORTIZ N° 189",
+    "local_direccion": "AV. NORMADIE 2065",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+56322931269",
-    "local_lat": "-32.784714476685",
-    "local_lng": "-71.5274971892257",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "+56322934798",
+    "local_lat": "-32.7868576166224",
+    "local_lng": "-71.5271948887773",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -65,7 +65,7 @@
     "local_telefono": "+560226313145",
     "local_lat": "-33.0189172526154",
     "local_lng": "-71.5510733225955",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -82,7 +82,7 @@
     "local_telefono": "+56322714044",
     "local_lat": "-33.024369299178",
     "local_lng": "-71.5569460874684",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -99,75 +99,75 @@
     "local_telefono": "+56322745048",
     "local_lat": "-33.0470628068749",
     "local_lng": "-71.6169778733873",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "220",
+    "fecha": "2026-08-09",
+    "local_id": "219",
     "fk_region": "6",
     "fk_comuna": "73",
     "fk_localidad": "19",
-    "local_nombre": "SAN ENRIQUE",
+    "local_nombre": "SALCOBRAND",
     "comuna_nombre": "SAN ANTONIO",
     "localidad_nombre": "SAN ANTONIO",
-    "local_direccion": "AV. CENTENARIO  N° 67",
+    "local_direccion": "AVENIDA PROVIDENCIA 102",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+56352216791",
-    "local_lat": "-33.5808947818732",
-    "local_lng": "-71.612144987547",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "224223300",
+    "local_lat": "-33.6115322773924",
+    "local_lng": "-71.61066544215494",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "267",
+    "fecha": "2026-08-09",
+    "local_id": "261",
     "fk_region": "6",
     "fk_comuna": "61",
     "fk_localidad": "20",
-    "local_nombre": "SANTA ROSA",
+    "local_nombre": "EL CONDOR",
     "comuna_nombre": "LOS ANDES",
     "localidad_nombre": "LOS ANDES",
-    "local_direccion": "CALLE OHIGGINS N° 298",
+    "local_direccion": "CALLE ESMERALDA N° 443",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "24",
-    "local_lat": "-32.8344951941142",
-    "local_lng": "-70.5977367633345",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "2421616",
+    "local_lat": "-32.8327871",
+    "local_lng": "-70.5990103",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "278",
+    "fecha": "2026-08-09",
+    "local_id": "282",
     "fk_region": "6",
     "fk_comuna": "75",
     "fk_localidad": "37",
-    "local_nombre": "CRUZ VERDE",
+    "local_nombre": "SALCOBRAND",
     "comuna_nombre": "SAN FELIPE",
     "localidad_nombre": "SAN FELIPE",
-    "local_direccion": "CALLE ARTURO PRAT N° 199",
+    "local_direccion": "CALLE COMBATE DE LA COIMAS N° 210",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "2510068",
-    "local_lat": "-32.7499960571596",
-    "local_lng": "-70.7254541910513",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "8407",
+    "local_lat": "-32.7507965157179",
+    "local_lng": "-70.7243062824228",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "311",
+    "fecha": "2026-08-09",
+    "local_id": "310",
     "fk_region": "6",
     "fk_comuna": "50",
     "fk_localidad": "8",
-    "local_nombre": "AHUMADA",
+    "local_nombre": "CRUZ VERDE",
     "comuna_nombre": "CONCON",
     "localidad_nombre": "CONCON",
-    "local_direccion": "CALLE MANANTIALES 945",
+    "local_direccion": "MAGALLANES 866",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "26313224",
-    "local_lat": "-32.9297354",
-    "local_lng": "-71.5177204",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "+56322813636",
+    "local_lat": "-32.929978604972",
+    "local_lng": "-71.5189630170604",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -184,23 +184,6 @@
     "local_telefono": "+562425641",
     "local_lat": "-20.213904",
     "local_lng": "-70.150348",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-09",
-    "local_id": "794",
-    "fk_region": "7",
-    "fk_comuna": "86",
-    "fk_localidad": "548",
-    "local_nombre": "LA UNION ",
-    "comuna_nombre": "CERRO NAVIA",
-    "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA SALVADOR GUTIERREZ 8165",
-    "funcionamiento_hora_apertura": "00:00:00",
-    "funcionamiento_hora_cierre": "00:00:00",
-    "local_telefono": "26499533",
-    "local_lat": "-33.4166923",
-    "local_lng": "-70.7560724",
     "funcionamiento_dia": "domingo"
   },
   {
@@ -218,7 +201,41 @@
     "local_telefono": "",
     "local_lat": "-33.285167",
     "local_lng": "-70.680634",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "823",
+    "fk_region": "7",
+    "fk_comuna": "88",
+    "fk_localidad": "549",
+    "local_nombre": "SAN ANDRES",
+    "comuna_nombre": "CONCHALI",
+    "localidad_nombre": "TURNOS",
+    "local_direccion": "CALLE MANIZALES 1898",
+    "funcionamiento_hora_apertura": "08:00:00",
+    "funcionamiento_hora_cierre": "07:59:00",
+    "local_telefono": "27286083",
+    "local_lat": "-33.3755607",
+    "local_lng": "-70.6848671",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "872",
+    "fk_region": "7",
+    "fk_comuna": "92",
+    "fk_localidad": "551",
+    "local_nombre": "DEL DR. SIMI ",
+    "comuna_nombre": "ESTACION CENTRAL",
+    "localidad_nombre": "TURNOS",
+    "local_direccion": "AVENIDA MATUCANA 24",
+    "funcionamiento_hora_apertura": "08:00:00",
+    "funcionamiento_hora_cierre": "07:59:00",
+    "local_telefono": "24401285",
+    "local_lat": "-33.4489528",
+    "local_lng": "-70.6793038",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -235,7 +252,7 @@
     "local_telefono": "+5627777528",
     "local_lat": "-33.40684316462889",
     "local_lng": "-70.6601390624962",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -252,7 +269,7 @@
     "local_telefono": "+560226313292",
     "local_lat": "-33.543243",
     "local_lng": "-70.570288",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -269,7 +286,7 @@
     "local_telefono": "+5622862541",
     "local_lat": "-33.522077",
     "local_lng": "-70.597461",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -286,7 +303,7 @@
     "local_telefono": "+5622971277",
     "local_lat": "-33.539997",
     "local_lng": "-70.571672",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -303,7 +320,7 @@
     "local_telefono": "+5626313205",
     "local_lat": "-33.43071187141251",
     "local_lng": "-70.55490532869719",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -320,7 +337,7 @@
     "local_telefono": "22167608",
     "local_lat": "-33.3559023",
     "local_lng": "-70.5171977",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -337,7 +354,7 @@
     "local_telefono": "+5626313058",
     "local_lat": "-33.41878",
     "local_lng": "-70.572098",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -354,7 +371,7 @@
     "local_telefono": "+5622156808",
     "local_lat": "-33.376502",
     "local_lng": "-70.525642",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -371,7 +388,7 @@
     "local_telefono": "+5622154653",
     "local_lat": "-33.373666",
     "local_lng": "-70.519669",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -388,7 +405,7 @@
     "local_telefono": "+5622248248",
     "local_lat": "-33.394043",
     "local_lng": "-70.545963",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -405,7 +422,7 @@
     "local_telefono": "+5626313285",
     "local_lat": "-33.362883",
     "local_lng": "-70.514956",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -422,7 +439,7 @@
     "local_telefono": "22418471",
     "local_lat": "-33.355194",
     "local_lng": "-70.532187",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -439,7 +456,7 @@
     "local_telefono": "+560222371550",
     "local_lat": "-33.477933",
     "local_lng": "-70.599040",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -456,7 +473,7 @@
     "local_telefono": "22370401",
     "local_lat": "-33.480686",
     "local_lng": "-70.599312",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -473,7 +490,7 @@
     "local_telefono": "+5626313081",
     "local_lat": "-33.5060179",
     "local_lng": "-70.7579657",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -490,7 +507,24 @@
     "local_telefono": "25321301",
     "local_lat": "-33.5066106",
     "local_lng": "-70.7577537",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "1397",
+    "fk_region": "7",
+    "fk_comuna": "114",
+    "fk_localidad": "553",
+    "local_nombre": "SAN JUAN",
+    "comuna_nombre": "PEÑAFLOR",
+    "localidad_nombre": "TURNOS",
+    "local_direccion": "CALLE 21 DE MAYO  4555",
+    "funcionamiento_hora_apertura": "08:00:00",
+    "funcionamiento_hora_cierre": "07:59:00",
+    "local_telefono": "28120568",
+    "local_lat": "-33.6093393",
+    "local_lng": "-70.9011298",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -507,7 +541,7 @@
     "local_telefono": "22098919",
     "local_lat": "-33.438335",
     "local_lng": "-70.615679",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -524,7 +558,7 @@
     "local_telefono": "+5623440447",
     "local_lat": "-33.429951",
     "local_lng": "-70.602705",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -541,24 +575,24 @@
     "local_telefono": "22357772",
     "local_lat": "-33.433514",
     "local_lng": "-70.6175532",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "1528",
+    "fecha": "2026-08-09",
+    "local_id": "1508",
     "fk_region": "7",
     "fk_comuna": "118",
     "fk_localidad": "555",
-    "local_nombre": "SERRANO",
+    "local_nombre": "AHUMADA",
     "comuna_nombre": "PUDAHUEL",
     "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA SERRANO 1336",
+    "local_direccion": "AVENIDA RAMÓN FREIRE 7001",
     "funcionamiento_hora_apertura": "08:00:00",
     "funcionamiento_hora_cierre": "07:59:00",
-    "local_telefono": "26692766",
-    "local_lat": "-33.433966",
-    "local_lng": "-70.766762",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "27479123",
+    "local_lat": "-33.467965",
+    "local_lng": "-70.731704",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -575,41 +609,24 @@
     "local_telefono": "28504068",
     "local_lat": "-33.608347",
     "local_lng": "-70.576046",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "1611",
+    "fecha": "2026-08-09",
+    "local_id": "1659",
     "fk_region": "7",
-    "fk_comuna": "120",
-    "fk_localidad": "556",
-    "local_nombre": "BELEN",
-    "comuna_nombre": "QUILICURA",
+    "fk_comuna": "122",
+    "fk_localidad": "558",
+    "local_nombre": "CUMBRES",
+    "comuna_nombre": "RECOLETA",
     "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA JOSÉ FRANCISCO VERGARA 199",
+    "local_direccion": "CALLE PRINCIPAL IGNACIO CARRERA PINTO 670",
     "funcionamiento_hora_apertura": "08:00:00",
     "funcionamiento_hora_cierre": "07:59:00",
-    "local_telefono": "26031339",
-    "local_lat": "-33.367224",
-    "local_lng": "-70.734052",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "1635",
-    "fk_region": "7",
-    "fk_comuna": "121",
-    "fk_localidad": "557",
-    "local_nombre": "BARROSO",
-    "comuna_nombre": "QUINTA NORMAL",
-    "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA SALVADOR GUTIERREZ 6097",
-    "funcionamiento_hora_apertura": "08:00:00",
-    "funcionamiento_hora_cierre": "07:59:00",
-    "local_telefono": "27866546",
-    "local_lat": "-33.421695",
-    "local_lng": "-70.717868",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "28917316",
+    "local_lat": "-33.3813652",
+    "local_lng": "-70.6479592",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -626,7 +643,7 @@
     "local_telefono": "28589140",
     "local_lat": "-33.5946114",
     "local_lng": "-70.7058706",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -643,7 +660,7 @@
     "local_telefono": "+5602",
     "local_lat": "-33.509787",
     "local_lng": "-70.656783",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -660,7 +677,7 @@
     "local_telefono": "+5626313704",
     "local_lat": "-33.448018",
     "local_lng": "-70.635315",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -677,7 +694,7 @@
     "local_telefono": "+5622180474",
     "local_lat": "-33.389958",
     "local_lng": "-70.570359",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -694,58 +711,41 @@
     "local_telefono": "+5622187817",
     "local_lat": "-33.388865",
     "local_lng": "-70.568275",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "2270",
-    "fk_region": "10",
-    "fk_comuna": "200",
-    "fk_localidad": "219",
-    "local_nombre": "LA ESTRELLA",
-    "comuna_nombre": "ARAUCO",
-    "localidad_nombre": "ARAUCO",
-    "local_direccion": "CALLE CONDELL 654",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "965560403",
-    "local_lat": "-37.2460515",
-    "local_lng": "-73.3204832",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "2279",
+    "fecha": "2026-08-09",
+    "local_id": "2278",
     "fk_region": "10",
     "fk_comuna": "203",
     "fk_localidad": "222",
-    "local_nombre": "DR. SIMI",
+    "local_nombre": "CRUZ VERDE",
     "comuna_nombre": "CAÑETE",
     "localidad_nombre": "CAÑETE LOCALIDAD 1",
-    "local_direccion": "Saavedra 939",
+    "local_direccion": "COVADONGA Nº 267",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+562613154",
-    "local_lat": "-37.7985233",
-    "local_lng": "-73.39917439999999",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "+56412853670",
+    "local_lat": "-37.8016826795",
+    "local_lng": "-73.3995544978",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "2286",
+    "fecha": "2026-08-09",
+    "local_id": "2289",
     "fk_region": "10",
     "fk_comuna": "204",
     "fk_localidad": "223",
-    "local_nombre": "CRUZ VERDE",
+    "local_nombre": "REDFARMA",
     "comuna_nombre": "CHIGUAYANTE",
     "localidad_nombre": "CHIGUAYANTE LOCALIDAD 1",
-    "local_direccion": "AVENIDA MANUEL RODRIGUEZ 925",
+    "local_direccion": "AVENIDA M. RODRIGUEZ 1500",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
     "local_telefono": "",
-    "local_lat": "-36.9296007",
-    "local_lng": "-73.0232093",
-    "funcionamiento_dia": "sabado"
+    "local_lat": "-36.9341211",
+    "local_lng": "-73.0218301",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -762,7 +762,7 @@
     "local_telefono": "2228423",
     "local_lat": "-36.609273",
     "local_lng": "-72.101566",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -779,75 +779,75 @@
     "local_telefono": "",
     "local_lat": "-36.8156098",
     "local_lng": "-73.0311192",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "2369",
+    "fecha": "2026-08-09",
+    "local_id": "2395",
     "fk_region": "10",
-    "fk_comuna": "246",
-    "fk_localidad": "265",
-    "local_nombre": "TOME",
-    "comuna_nombre": "TOME",
-    "localidad_nombre": "TOME",
-    "local_direccion": "CALLE EGAÑA 1097",
+    "fk_comuna": "213",
+    "fk_localidad": "232",
+    "local_nombre": "FARMACIA DR. SIMI",
+    "comuna_nombre": "CURANILAHUE",
+    "localidad_nombre": "CURANILAHUE LOCALIDAD 1",
+    "local_direccion": "OHIGGINS Nº 101",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "+56412692915",
+    "local_lat": "-37.4727826716",
+    "local_lng": "-73.3474876865",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "2398",
+    "fk_region": "10",
+    "fk_comuna": "345",
+    "fk_localidad": "363",
+    "local_nombre": "AHUMADA",
+    "comuna_nombre": "HUALPEN",
+    "localidad_nombre": "HUALPEN LOCALIDAD 1",
+    "local_direccion": "AVENIDA COLON 8961",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
     "local_telefono": "",
-    "local_lat": "-36.6178469",
-    "local_lng": "-72.9569065",
-    "funcionamiento_dia": "sabado"
+    "local_lat": "-36.7998409",
+    "local_lng": "-73.0851893",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "2409",
+    "fecha": "2026-08-09",
+    "local_id": "2408",
     "fk_region": "10",
     "fk_comuna": "218",
     "fk_localidad": "237",
-    "local_nombre": "DR. SIMI",
+    "local_nombre": "CRUZ VERDE",
     "comuna_nombre": "LEBU",
     "localidad_nombre": "LEBU LOCALIDAD 1",
-    "local_direccion": "RIOSECO Nº 267",
+    "local_direccion": "SAAVEDRA Nº 599",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+56412511498",
-    "local_lat": "-37.6082312686",
-    "local_lng": "-73.652900214",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "+56412519780",
+    "local_lat": "-37.6099792454",
+    "local_lng": "-73.6552251802",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "2419",
-    "fk_region": "10",
-    "fk_comuna": "227",
-    "fk_localidad": "246",
-    "local_nombre": "CRUZ VERDE",
-    "comuna_nombre": "PENCO",
-    "localidad_nombre": "PENCO",
-    "local_direccion": "CALLE FREIRE 500",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "",
-    "local_lat": "-36.7376312",
-    "local_lng": "-72.995393",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "2433",
+    "fecha": "2026-08-09",
+    "local_id": "2436",
     "fk_region": "16",
     "fk_comuna": "235",
     "fk_localidad": "254",
-    "local_nombre": "CRUZ VERDE",
+    "local_nombre": "FARMACIAS DEL DR. SIMI",
     "comuna_nombre": "SAN CARLOS",
     "localidad_nombre": "SAN CARLOS",
-    "local_direccion": "CALLE IGNACIO SERRANO 527",
+    "local_direccion": "CALLE INDEPENDENCIA 651",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "2411420",
-    "local_lat": "-36.4264618",
-    "local_lng": "-71.9576878",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "2423702",
+    "local_lat": "-36.4250468",
+    "local_lng": "-71.9572037",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -864,7 +864,7 @@
     "local_telefono": "",
     "local_lat": "-36.8429936",
     "local_lng": "-73.0938803",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -881,7 +881,7 @@
     "local_telefono": "",
     "local_lat": "-36.7131145",
     "local_lng": "-73.1138018",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -898,7 +898,24 @@
     "local_telefono": "+56993796276",
     "local_lat": "-37.469141",
     "local_lng": "-72.350826",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "2528",
+    "fk_region": "10",
+    "fk_comuna": "212",
+    "fk_localidad": "231",
+    "local_nombre": "ZURITA",
+    "comuna_nombre": "CORONEL",
+    "localidad_nombre": "CORONEL CENTRO",
+    "local_direccion": "AVENIDA MANUEL MONTT 400",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "",
+    "local_lat": "-37.026776",
+    "local_lng": "-73.1475006",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -915,7 +932,7 @@
     "local_telefono": "+56993796664",
     "local_lat": "-41.4617201",
     "local_lng": "-72.94411550000001",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -932,27 +949,61 @@
     "local_telefono": "522241213",
     "local_lat": "-27.3659552768545",
     "local_lng": "-70.33417253640327",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "3146",
+    "fecha": "2026-08-09",
+    "local_id": "3132",
     "fk_region": "4",
     "fk_comuna": "29",
     "fk_localidad": "85",
-    "local_nombre": "FARMACIA AHUMADA",
+    "local_nombre": "FARMACIA CRUZ VERDE",
     "comuna_nombre": "VALLENAR",
     "localidad_nombre": "VALLENAR",
-    "local_direccion": "AVENIDA ARTURO PRAT 1100",
+    "local_direccion": "AVENIDA ARTURO PRAT 1040",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "232740395",
-    "local_lat": "-28.5769619",
-    "local_lng": "-70.7584467",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "512618857",
+    "local_lat": "-28.5767812",
+    "local_lng": "-70.7591148",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
+    "local_id": "3153",
+    "fk_region": "4",
+    "fk_comuna": "22",
+    "fk_localidad": "78",
+    "local_nombre": "FARMACIA CRUZ",
+    "comuna_nombre": "CALDERA",
+    "localidad_nombre": "CALDERA",
+    "local_direccion": "CALLE GANA 298",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "522315133",
+    "local_lat": "-27.066871",
+    "local_lng": "-70.8227523",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "3159",
+    "fk_region": "4",
+    "fk_comuna": "23",
+    "fk_localidad": "79",
+    "local_nombre": "FARMACIA PAEZ",
+    "comuna_nombre": "CHAÑARAL",
+    "localidad_nombre": "CHAÑARAL",
+    "local_direccion": "CALLE RAÚL BARRIONUEVO 156",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "522481455",
+    "local_lat": "-26.3351541",
+    "local_lng": "-70.6137336",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
     "local_id": "3173",
     "fk_region": "12",
     "fk_comuna": "292",
@@ -966,7 +1017,41 @@
     "local_telefono": "+56632422244",
     "local_lat": "-40.0711944",
     "local_lng": "-72.8724722",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "3176",
+    "fk_region": "12",
+    "fk_comuna": "293",
+    "fk_localidad": "312",
+    "local_nombre": "DR. SIMI",
+    "comuna_nombre": "RIO BUENO",
+    "localidad_nombre": "RIO BUENO",
+    "local_direccion": "PEDRO LAGOS N° 622",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "+562341818",
+    "local_lat": "-40.334403",
+    "local_lng": "-72.954823",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "3181",
+    "fk_region": "12",
+    "fk_comuna": "291",
+    "fk_localidad": "310",
+    "local_nombre": "SALCOBRAND",
+    "comuna_nombre": "PANGUIPULLI",
+    "localidad_nombre": "PANGUIPULLI",
+    "local_direccion": "CALLE MARTINEZ DE ROZAS 720",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "",
+    "local_lat": "-39.6426963",
+    "local_lng": "-72.3318947",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -983,58 +1068,24 @@
     "local_telefono": "2244915",
     "local_lat": "-38.736366215393986",
     "local_lng": "-72.61581743068848",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "3231",
-    "fk_region": "10",
-    "fk_comuna": "213",
-    "fk_localidad": "232",
-    "local_nombre": "PAGUE MENOS",
-    "comuna_nombre": "CURANILAHUE",
-    "localidad_nombre": "CURANILAHUE LOCALIDAD 1",
-    "local_direccion": "RIQUELME N°751",
+    "fecha": "2026-08-09",
+    "local_id": "3193",
+    "fk_region": "12",
+    "fk_comuna": "284",
+    "fk_localidad": "303",
+    "local_nombre": "AHUMADA",
+    "comuna_nombre": "LA UNION",
+    "localidad_nombre": "LA UNION",
+    "local_direccion": "ESMERALDA Nº 723",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+560",
-    "local_lat": "-37.4756903",
-    "local_lng": "-73.347294",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "3239",
-    "fk_region": "13",
-    "fk_comuna": "318",
-    "fk_localidad": "337",
-    "local_nombre": "FARMACIA CRUZ VERDE",
-    "comuna_nombre": "QUELLON",
-    "localidad_nombre": "QUELLON",
-    "local_direccion": "LADRILLEROS 399",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+560987",
-    "local_lat": "-43.1175146",
-    "local_lng": "-73.61678059999997",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "3250",
-    "fk_region": "13",
-    "fk_comuna": "294",
-    "fk_localidad": "313",
-    "local_nombre": "FARMACIA NUEVA ERA",
-    "comuna_nombre": "ANCUD",
-    "localidad_nombre": "ANCUD",
-    "local_direccion": "ARTURO PRAT 183",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+56+56652623628",
-    "local_lat": "-41.8665733",
-    "local_lng": "-73.8279114",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "+56632426857",
+    "local_lat": "-40.2944444",
+    "local_lng": "-73.081055555",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1051,24 +1102,24 @@
     "local_telefono": "2531618",
     "local_lat": "-42.4816605",
     "local_lng": "-73.7633728",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "3318",
+    "fecha": "2026-08-09",
+    "local_id": "3319",
     "fk_region": "13",
-    "fk_comuna": "313",
-    "fk_localidad": "332",
-    "local_nombre": "FARMACIA  AHUMADA ",
-    "comuna_nombre": "PUERTO VARAS",
-    "localidad_nombre": "SECTOR CENTRO",
-    "local_direccion": "SAN FRANCISCO N°350",
+    "fk_comuna": "295",
+    "fk_localidad": "314",
+    "local_nombre": "FARMACIAS CRUZ VERDE ",
+    "comuna_nombre": "CALBUCO",
+    "localidad_nombre": "CALBUCO",
+    "local_direccion": "CALLE FEDERICO ERRAZURIZ 370",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+5626313507",
-    "local_lat": "-41.31789089999999",
-    "local_lng": "-72.9851825000000",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "652462250",
+    "local_lat": "-41.770456",
+    "local_lng": "-73.1273123",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1085,7 +1136,24 @@
     "local_telefono": "2311618",
     "local_lat": "-40.5731785",
     "local_lng": "-73.1334623",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-10",
+    "local_id": "3366",
+    "fk_region": "14",
+    "fk_comuna": "324",
+    "fk_localidad": "343",
+    "local_nombre": "FARMACIAS CRUZ VERDE",
+    "comuna_nombre": "AYSEN",
+    "localidad_nombre": "AYSEN",
+    "local_direccion": "CALLE SARGENTO ALDEA  743",
+    "funcionamiento_hora_apertura": "00:00:00",
+    "funcionamiento_hora_cierre": "23:59:00",
+    "local_telefono": "2332543",
+    "local_lat": "-45.405192049057625",
+    "local_lng": "-72.69716610188239",
+    "funcionamiento_dia": "lunes"
   },
   {
     "fecha": "2026-07-01",
@@ -1102,7 +1170,7 @@
     "local_telefono": "2258386",
     "local_lat": "-45.5729119",
     "local_lng": "-72.0709977",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1119,27 +1187,61 @@
     "local_telefono": "2258219",
     "local_lat": "-23.6667333",
     "local_lng": "-70.4042781",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "3535",
+    "fecha": "2026-08-09",
+    "local_id": "3518",
+    "fk_region": "11",
+    "fk_comuna": "251",
+    "fk_localidad": "270",
+    "local_nombre": "FARMACIA AHUMADA(L-331)",
+    "comuna_nombre": "ANGOL",
+    "localidad_nombre": "ANGOL",
+    "local_direccion": "CALLE LAUTARO  84",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "2715708",
+    "local_lat": "-37.79806516262678",
+    "local_lng": "-72.70645409999997",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "3527",
+    "fk_region": "11",
+    "fk_comuna": "271",
+    "fk_localidad": "290",
+    "local_nombre": "FARMACIA AHUMADA  L 340",
+    "comuna_nombre": "PUCON",
+    "localidad_nombre": "PUCON",
+    "local_direccion": "AVENIDA O'HIGGINS  412",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "26313116",
+    "local_lat": "-39.27597697899502",
+    "local_lng": "-71.9744338857056",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "3536",
     "fk_region": "11",
     "fk_comuna": "279",
     "fk_localidad": "298",
-    "local_nombre": "FARMACIA CRUZ VERDE 774",
+    "local_nombre": "FARMACIA CENTRAL 01",
     "comuna_nombre": "VICTORIA",
     "localidad_nombre": "VICTORIA",
-    "local_direccion": "GRAL. LAGOS Nº 522",
+    "local_direccion": "AVENIDA CONFEDERACIÓN SUIZA 1268",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+562844046",
-    "local_lat": "-38.23462051780492",
-    "local_lng": "-72.33316346788939",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "452423746",
+    "local_lat": "-38.23508560052928",
+    "local_lng": "-72.3323669185105",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "3541",
     "fk_region": "11",
     "fk_comuna": "278",
@@ -1153,10 +1255,27 @@
     "local_telefono": "+56452862763",
     "local_lat": "-38.25050553043821",
     "local_lng": "-72.6683815534592",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-10",
+    "local_id": "3544",
+    "fk_region": "11",
+    "fk_comuna": "255",
+    "fk_localidad": "274",
+    "local_nombre": "FARMACIA CRISTAL",
+    "comuna_nombre": "CURACAUTIN",
+    "localidad_nombre": "CURACAUTIN",
+    "local_direccion": "OHIGGINS Nº 405",
+    "funcionamiento_hora_apertura": "00:00:00",
+    "funcionamiento_hora_cierre": "00:00:00",
+    "local_telefono": "+56452881279",
+    "local_lat": "-38.437386599388965",
+    "local_lng": "-71.89296468059547",
+    "funcionamiento_dia": "lunes"
+  },
+  {
+    "fecha": "2026-08-09",
     "local_id": "3549",
     "fk_region": "11",
     "fk_comuna": "252",
@@ -1170,7 +1289,24 @@
     "local_telefono": "+562652091",
     "local_lat": "-38.712308210701124",
     "local_lng": "-73.16674910779568",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "3565",
+    "fk_region": "11",
+    "fk_comuna": "261",
+    "fk_localidad": "280",
+    "local_nombre": "DR. SIMI",
+    "comuna_nombre": "LAUTARO",
+    "localidad_nombre": "LAUTARO",
+    "local_direccion": "OHIGGINS Nº 707",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "+56452533246",
+    "local_lat": "-38.53093159891467",
+    "local_lng": "-72.43402816122438",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1187,7 +1323,7 @@
     "local_telefono": "",
     "local_lat": "-29.903190742432812",
     "local_lng": "-71.24985700383696",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1204,7 +1340,7 @@
     "local_telefono": "2222180",
     "local_lat": "-34.1693171131014",
     "local_lng": "-70.74636613754274",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1221,7 +1357,7 @@
     "local_telefono": "+56722227528",
     "local_lat": "-34.1694815",
     "local_lng": "-70.74616500000002",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1238,10 +1374,10 @@
     "local_telefono": "2712927",
     "local_lat": "-34.58757171966949",
     "local_lng": "-70.98674275517862",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "3698",
     "fk_region": "8",
     "fk_comuna": "144",
@@ -1255,10 +1391,27 @@
     "local_telefono": "2502091",
     "local_lat": "-34.2932184",
     "local_lng": "-71.3126292",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
+    "local_id": "3715",
+    "fk_region": "8",
+    "fk_comuna": "163",
+    "fk_localidad": "182",
+    "local_nombre": "MAGISTRAL",
+    "comuna_nombre": "RENGO",
+    "localidad_nombre": "RENGO",
+    "local_direccion": "DEMOCRACIA N° 135-B",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "+562513840",
+    "local_lat": "-34.40692642629168",
+    "local_lng": "-70.86083479947513",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
     "local_id": "3723",
     "fk_region": "8",
     "fk_comuna": "166",
@@ -1272,24 +1425,24 @@
     "local_telefono": "+56722491253",
     "local_lat": "-33.978526028591716",
     "local_lng": "-70.7123248245046",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "3773",
+    "fecha": "2026-08-09",
+    "local_id": "3757",
     "fk_region": "8",
     "fk_comuna": "167",
     "fk_localidad": "186",
-    "local_nombre": "FARMACIA SALCOBRAND",
+    "local_nombre": "DR. SIMI",
     "comuna_nombre": "SAN VICENTE",
     "localidad_nombre": "SAN VICENTE",
-    "local_direccion": "OTRO GERMAN RIESCO 902",
+    "local_direccion": "EXEQUIEL GONZÁLEZ N° 399",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "2572374",
-    "local_lat": "-34.4396872",
-    "local_lng": "-71.0772416",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "+56722959650",
+    "local_lat": "-34.440084609298026",
+    "local_lng": "-71.07920001721186",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1306,10 +1459,10 @@
     "local_telefono": "2824420",
     "local_lat": "-34.64054635232659",
     "local_lng": "-71.36640495172588",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "3781",
     "fk_region": "8",
     "fk_comuna": "137",
@@ -1323,7 +1476,24 @@
     "local_telefono": "+56722781395",
     "local_lat": "-34.708745722167066",
     "local_lng": "-71.044027980951",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "3828",
+    "fk_region": "9",
+    "fk_comuna": "191",
+    "fk_localidad": "210",
+    "local_nombre": "FARMACIA DR. SIMI",
+    "comuna_nombre": "SAN CLEMENTE",
+    "localidad_nombre": "SAN CLEMENTE",
+    "local_direccion": "HUAMACHUCO N°841",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "01:00:00",
+    "local_telefono": "+560",
+    "local_lat": "-35.5382881",
+    "local_lng": "-71.4880219",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1340,24 +1510,24 @@
     "local_telefono": "",
     "local_lat": "-35.8465812",
     "local_lng": "-71.5953351",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "3888",
+    "fecha": "2026-08-09",
+    "local_id": "3884",
     "fk_region": "9",
     "fk_comuna": "172",
     "fk_localidad": "191",
-    "local_nombre": "FARMACIA CRUZ VERDE",
+    "local_nombre": "FARMACIA FARMASUR",
     "comuna_nombre": "CONSTITUCION",
     "localidad_nombre": "CONSTITUCION",
-    "local_direccion": "FREIRE N° 664-A",
+    "local_direccion": "FREIRE N° 805-B",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
     "local_telefono": "+560",
-    "local_lat": "-35.332438",
-    "local_lng": "-72.410707",
-    "funcionamiento_dia": "sabado"
+    "local_lat": "-35.334175",
+    "local_lng": "-72.409846",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1374,7 +1544,7 @@
     "local_telefono": "",
     "local_lat": "-34.98386251",
     "local_lng": "-71.24167307",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1391,10 +1561,10 @@
     "local_telefono": "",
     "local_lat": "-35.4278902328126",
     "local_lng": "-71.6555097197239",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "4140",
     "fk_region": "12",
     "fk_comuna": "289",
@@ -1408,10 +1578,10 @@
     "local_telefono": "+5663",
     "local_lat": "-39.538861",
     "local_lng": "-72.962722",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "4357",
     "fk_region": "11",
     "fk_comuna": "267",
@@ -1425,10 +1595,10 @@
     "local_telefono": "+56452611288",
     "local_lat": "-38.744145443741864",
     "local_lng": "-72.95253026325992",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "4377",
     "fk_region": "11",
     "fk_comuna": "270",
@@ -1442,24 +1612,7 @@
     "local_telefono": "",
     "local_lat": "-38.9848266",
     "local_lng": "-72.639844",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "4517",
-    "fk_region": "13",
-    "fk_comuna": "295",
-    "fk_localidad": "314",
-    "local_nombre": "FARMACIA DR.SIMI",
-    "comuna_nombre": "CALBUCO",
-    "localidad_nombre": "CALBUCO",
-    "local_direccion": "FEDERICO ERRAZURIZ Nº 599 –B, COMUNA DE CALBUCO",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+5656992426819",
-    "local_lat": "-41.7745255",
-    "local_lng": "-73.1273185",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1476,7 +1629,7 @@
     "local_telefono": "",
     "local_lat": "-33.35215",
     "local_lng": "-70.67007",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1493,10 +1646,10 @@
     "local_telefono": "+56224223300",
     "local_lat": "-33.444484",
     "local_lng": "-70.636964",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "4595",
     "fk_region": "11",
     "fk_comuna": "253",
@@ -1510,7 +1663,24 @@
     "local_telefono": "2812942",
     "local_lat": "-37.9581374",
     "local_lng": "-72.4359499",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "4620",
+    "fk_region": "10",
+    "fk_comuna": "246",
+    "fk_localidad": "265",
+    "local_nombre": "FARMACIA BARRIO SALUD TOMÉ",
+    "comuna_nombre": "TOME",
+    "localidad_nombre": "TOME",
+    "local_direccion": "CALLE IGNACIO SERRANO 917",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "",
+    "local_lat": "-36.6196181",
+    "local_lng": "-72.9575534",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1527,44 +1697,10 @@
     "local_telefono": "963060175",
     "local_lat": "-30.6029535",
     "local_lng": "-71.2011749",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "4880",
-    "fk_region": "8",
-    "fk_comuna": "163",
-    "fk_localidad": "182",
-    "local_nombre": "FARMACIA RENGO",
-    "comuna_nombre": "RENGO",
-    "localidad_nombre": "RENGO",
-    "local_direccion": "RENGO, URRIOLA 481",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+560",
-    "local_lat": "-34.4101428",
-    "local_lng": "-70.8557303",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "4905",
-    "fk_region": "4",
-    "fk_comuna": "23",
-    "fk_localidad": "79",
-    "local_nombre": "FARMACIA PORTOFINO",
-    "comuna_nombre": "CHAÑARAL",
-    "localidad_nombre": "CHAÑARAL",
-    "local_direccion": "CALLE MERINO JARPA 547",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "522513739",
-    "local_lat": "-26.346713",
-    "local_lng": "-70.6220109",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "5197",
     "fk_region": "12",
     "fk_comuna": "286",
@@ -1578,44 +1714,44 @@
     "local_telefono": "+56988080659",
     "local_lat": "-39.4525314",
     "local_lng": "-72.77454610000001",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "5319",
+    "fecha": "2026-08-09",
+    "local_id": "5299",
     "fk_region": "7",
-    "fk_comuna": "122",
-    "fk_localidad": "558",
-    "local_nombre": "DEL DR. SIMI",
-    "comuna_nombre": "RECOLETA",
+    "fk_comuna": "121",
+    "fk_localidad": "557",
+    "local_nombre": "VILLASANA",
+    "comuna_nombre": "QUINTA NORMAL",
     "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA RECOLETA 836",
+    "local_direccion": "AVENIDA CARRASCAL 3892",
     "funcionamiento_hora_apertura": "08:00:00",
     "funcionamiento_hora_cierre": "07:59:00",
     "local_telefono": "",
-    "local_lat": "-33.4224674",
-    "local_lng": "-70.64509670000001",
-    "funcionamiento_dia": "sabado"
+    "local_lat": "-33.42456500000001",
+    "local_lng": "-70.68764379999999",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "5514",
-    "fk_region": "12",
-    "fk_comuna": "284",
-    "fk_localidad": "303",
-    "local_nombre": "LA UNIÓN",
-    "comuna_nombre": "LA UNION",
-    "localidad_nombre": "LA UNION",
-    "local_direccion": "AVENIDA ARTURO PRAT 1091",
+    "fecha": "2026-08-09",
+    "local_id": "5305",
+    "fk_region": "13",
+    "fk_comuna": "313",
+    "fk_localidad": "332",
+    "local_nombre": "FARMACIA IDINI",
+    "comuna_nombre": "PUERTO VARAS",
+    "localidad_nombre": "SECTOR CENTRO",
+    "local_direccion": "WALKER MARTINEZ N°317, PUERTO VARAS",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "",
-    "local_lat": "-40.3395757",
-    "local_lng": "-72.957415",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "+5665",
+    "local_lat": "-41.3166872",
+    "local_lng": "-72.9840865",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "5616",
     "fk_region": "11",
     "fk_comuna": "281",
@@ -1629,10 +1765,10 @@
     "local_telefono": "+56972312988",
     "local_lat": "-39.4876843",
     "local_lng": "-72.16021549999999",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "5621",
     "fk_region": "11",
     "fk_comuna": "280",
@@ -1646,7 +1782,7 @@
     "local_telefono": "+56984126521",
     "local_lat": "-38.6699481",
     "local_lng": "-72.22441220000002",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1663,41 +1799,7 @@
     "local_telefono": "+560",
     "local_lat": "-33.455672",
     "local_lng": "-70.58563",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "5822",
-    "fk_region": "7",
-    "fk_comuna": "114",
-    "fk_localidad": "553",
-    "local_nombre": "AITUE",
-    "comuna_nombre": "PEÑAFLOR",
-    "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA BALMACEDA 1435",
-    "funcionamiento_hora_apertura": "08:00:00",
-    "funcionamiento_hora_cierre": "07:59:00",
-    "local_telefono": "",
-    "local_lat": "-33.6135166",
-    "local_lng": "-70.8609787",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "5846",
-    "fk_region": "6",
-    "fk_comuna": "58",
-    "fk_localidad": "14",
-    "local_nombre": "SUFARMA",
-    "comuna_nombre": "LA LIGUA",
-    "localidad_nombre": "LA LIGUA",
-    "local_direccion": "CALLE URIBE 434",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "65293030",
-    "local_lat": "-32.4466548",
-    "local_lng": "-71.2300415",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1714,41 +1816,58 @@
     "local_telefono": "63060175",
     "local_lat": "-29.903139589695808",
     "local_lng": "-71.24986769830777",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "5995",
-    "fk_region": "12",
-    "fk_comuna": "293",
-    "fk_localidad": "312",
-    "local_nombre": "RÍO BUENO",
-    "comuna_nombre": "RIO BUENO",
-    "localidad_nombre": "RIO BUENO",
-    "local_direccion": "ESMERALDA N° 1285",
+    "fecha": "2026-08-09",
+    "local_id": "6080",
+    "fk_region": "6",
+    "fk_comuna": "58",
+    "fk_localidad": "14",
+    "local_nombre": "SUFARMA",
+    "comuna_nombre": "LA LIGUA",
+    "localidad_nombre": "LA LIGUA",
+    "local_direccion": "CALLE ORTIZ DE ROZAS 754",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+56",
-    "local_lat": "-40.333108",
-    "local_lng": "-72.953781",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "93417440",
+    "local_lat": "-32.4490304",
+    "local_lng": "-71.2338972",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "6115",
-    "fk_region": "7",
-    "fk_comuna": "111",
-    "fk_localidad": "552",
-    "local_nombre": "FARMALEX",
-    "comuna_nombre": "PADRE HURTADO",
-    "localidad_nombre": "TURNOS",
-    "local_direccion": "CALLE PRIMERA TRANSVERSAL 353",
-    "funcionamiento_hora_apertura": "08:00:00",
-    "funcionamiento_hora_cierre": "07:59:00",
+    "fecha": "2026-08-09",
+    "local_id": "6098",
+    "fk_region": "5",
+    "fk_comuna": "33",
+    "fk_localidad": "89",
+    "local_nombre": "FARMACIAS CRUZ VERDE",
+    "comuna_nombre": "COQUIMBO",
+    "localidad_nombre": "COQUIMBO",
+    "local_direccion": "CALLE JOSÉ SANTIAGO ALDUNATE 1499",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
     "local_telefono": "",
-    "local_lat": "-33.563030",
-    "local_lng": "-70.796775",
-    "funcionamiento_dia": "sabado"
+    "local_lat": "-29.9572587",
+    "local_lng": "-71.3394065",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "6348",
+    "fk_region": "10",
+    "fk_comuna": "200",
+    "fk_localidad": "219",
+    "local_nombre": "SALCOBRAND",
+    "comuna_nombre": "ARAUCO",
+    "localidad_nombre": "ARAUCO",
+    "local_direccion": "CALLE ESMERALDA 334",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "24223300",
+    "local_lat": "-37.2464179",
+    "local_lng": "-73.3158626",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1765,44 +1884,27 @@
     "local_telefono": "",
     "local_lat": "-36.8222156",
     "local_lng": "-73.0359079",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "6516",
-    "fk_region": "7",
-    "fk_comuna": "88",
-    "fk_localidad": "549",
-    "local_nombre": "ABARCA",
-    "comuna_nombre": "CONCHALI",
-    "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA INDEPENDENCIA 5307",
-    "funcionamiento_hora_apertura": "08:00:00",
-    "funcionamiento_hora_cierre": "07:59:00",
-    "local_telefono": "",
-    "local_lat": "-33.3797087",
-    "local_lng": "-70.6832263",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "6646",
-    "fk_region": "11",
-    "fk_comuna": "271",
-    "fk_localidad": "290",
-    "local_nombre": "FARMACIA MR FARMA",
-    "comuna_nombre": "PUCON",
-    "localidad_nombre": "PUCON",
-    "local_direccion": "CALLE MIGUEL ANSORENA  425",
+    "fecha": "2026-08-09",
+    "local_id": "6638",
+    "fk_region": "9",
+    "fk_comuna": "169",
+    "fk_localidad": "188",
+    "local_nombre": "FARMACIA SAN RAFAEL",
+    "comuna_nombre": "CAUQUENES",
+    "localidad_nombre": "CAUQUENES",
+    "local_direccion": "ANTONIO VARAS Nº696",
     "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "88822413",
-    "local_lat": "-39.276581",
-    "local_lng": "-71.974481",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_hora_cierre": "01:00:00",
+    "local_telefono": "+560920069576",
+    "local_lat": "-35.966388",
+    "local_lng": "-72.318888",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "6696",
     "fk_region": "12",
     "fk_comuna": "287",
@@ -1816,24 +1918,7 @@
     "local_telefono": "+56",
     "local_lat": "-39.86163936040006",
     "local_lng": "-72.81548257208831",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "6734",
-    "fk_region": "10",
-    "fk_comuna": "212",
-    "fk_localidad": "231",
-    "local_nombre": "FARMACIA GENÉRICA",
-    "comuna_nombre": "CORONEL",
-    "localidad_nombre": "CORONEL CENTRO",
-    "local_direccion": "AVENIDA MANUEL MONTT 460",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "",
-    "local_lat": "-37.027197",
-    "local_lng": "-73.1471652",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1850,10 +1935,10 @@
     "local_telefono": "99625048",
     "local_lat": "-33.0465129",
     "local_lng": "-71.4413327",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "6904",
     "fk_region": "11",
     "fk_comuna": "262",
@@ -1867,24 +1952,7 @@
     "local_telefono": "957902932",
     "local_lat": "-39.3660191",
     "local_lng": "-72.6355051",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "7002",
-    "fk_region": "1",
-    "fk_comuna": "1",
-    "fk_localidad": "57",
-    "local_nombre": "FARMAMICHI",
-    "comuna_nombre": "ARICA",
-    "localidad_nombre": "ARICA - CENTRAL",
-    "local_direccion": "CALLE JOSÉ VICTORINO LASTARRIA 1219",
-    "funcionamiento_hora_apertura": "21:00:00",
-    "funcionamiento_hora_cierre": "09:00:00",
-    "local_telefono": "",
-    "local_lat": "-18.4803254",
-    "local_lng": "-70.3074188",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1901,24 +1969,7 @@
     "local_telefono": "967698175",
     "local_lat": "-40.5922129",
     "local_lng": "-73.1256356",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "7251",
-    "fk_region": "4",
-    "fk_comuna": "22",
-    "fk_localidad": "78",
-    "local_nombre": "FARMACIA CRUZ VERDE",
-    "comuna_nombre": "CALDERA",
-    "localidad_nombre": "CALDERA",
-    "local_direccion": "CALLE OSSA CERDA 330",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "226944000",
-    "local_lat": "-27.0677353",
-    "local_lng": "-70.8228434",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1935,10 +1986,44 @@
     "local_telefono": "79859135",
     "local_lat": "-33.0449112",
     "local_lng": "-71.3856936",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-10",
+    "local_id": "7656",
+    "fk_region": "7",
+    "fk_comuna": "86",
+    "fk_localidad": "548",
+    "local_nombre": "COFARMA",
+    "comuna_nombre": "CERRO NAVIA",
+    "localidad_nombre": "TURNOS",
+    "local_direccion": "AVENIDA SALVADOR GUTIERREZ 7953",
+    "funcionamiento_hora_apertura": "00:00:00",
+    "funcionamiento_hora_cierre": "00:00:00",
+    "local_telefono": "",
+    "local_lat": "-33.416768",
+    "local_lng": "-70.7492544",
+    "funcionamiento_dia": "lunes"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "7690",
+    "fk_region": "13",
+    "fk_comuna": "294",
+    "fk_localidad": "313",
+    "local_nombre": "FARMACIA VERDEVIDA",
+    "comuna_nombre": "ANCUD",
+    "localidad_nombre": "ANCUD",
+    "local_direccion": "ANIBAL PINTO 312",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "+56963066636",
+    "local_lat": "-41.86827",
+    "local_lng": "-73.82574",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
     "local_id": "7709",
     "fk_region": "11",
     "fk_comuna": "260",
@@ -1952,7 +2037,24 @@
     "local_telefono": "53462170",
     "local_lat": "-39.0993186",
     "local_lng": "-72.6744388",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "7822",
+    "fk_region": "10",
+    "fk_comuna": "221",
+    "fk_localidad": "240",
+    "local_nombre": "FARMACIA LOTA SALUD",
+    "comuna_nombre": "LOTA",
+    "localidad_nombre": "LOTA",
+    "local_direccion": "AVENIDA PEDRO AGUIRRE CERDA 735",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "",
+    "local_lat": "-37.0912935",
+    "local_lng": "-73.1578092",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -1969,24 +2071,7 @@
     "local_telefono": "923854505",
     "local_lat": "-41.47070",
     "local_lng": "-72.93902",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "7977",
-    "fk_region": "11",
-    "fk_comuna": "261",
-    "fk_localidad": "280",
-    "local_nombre": "FARMACIA CRUZ VERDE",
-    "comuna_nombre": "LAUTARO",
-    "localidad_nombre": "LAUTARO",
-    "local_direccion": "AVDA O´HIGGINS N° 892 LAUTARO",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+56956142633",
-    "local_lat": "-38.532622",
-    "local_lng": "-72.435036",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -2003,61 +2088,44 @@
     "local_telefono": "",
     "local_lat": "-39.81404129174377",
     "local_lng": "-73.24508514320313",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "9113",
+    "fecha": "2026-08-09",
+    "local_id": "8085",
     "fk_region": "7",
-    "fk_comuna": "123",
-    "fk_localidad": "559",
-    "local_nombre": "LA GENERICA",
-    "comuna_nombre": "RENCA",
+    "fk_comuna": "120",
+    "fk_localidad": "556",
+    "local_nombre": "MEDIAHORRO",
+    "comuna_nombre": "QUILICURA",
     "localidad_nombre": "TURNOS",
-    "local_direccion": "CALLE BLANCO ENCALADA 1425",
+    "local_direccion": "CALLE LOS DURAZNOS 2",
     "funcionamiento_hora_apertura": "08:00:00",
     "funcionamiento_hora_cierre": "07:59:00",
     "local_telefono": "",
-    "local_lat": "-33.40333630000001",
-    "local_lng": "-70.7046569",
-    "funcionamiento_dia": "sabado"
+    "local_lat": "-33.36414",
+    "local_lng": "-70.73424",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "9297",
+    "fecha": "2026-08-09",
+    "local_id": "9451",
     "fk_region": "7",
     "fk_comuna": "125",
     "fk_localidad": "560",
-    "local_nombre": "Amaya",
+    "local_nombre": "PALUMBO",
     "comuna_nombre": "SAN JOAQUIN",
     "localidad_nombre": "TURNOS",
-    "local_direccion": "CALLE PRIMERO DE MAYO 3582",
+    "local_direccion": "AVENIDA SALVADOR ALLENDE 422",
     "funcionamiento_hora_apertura": "08:00:00",
     "funcionamiento_hora_cierre": "07:59:00",
-    "local_telefono": "",
-    "local_lat": "-33.4914367",
-    "local_lng": "-70.6238149",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "957990757",
+    "local_lat": "-33.4957362",
+    "local_lng": "-70.6354626",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "9352",
-    "fk_region": "10",
-    "fk_comuna": "221",
-    "fk_localidad": "240",
-    "local_nombre": "FARMACIA CAUPOLICÁN",
-    "comuna_nombre": "LOTA",
-    "localidad_nombre": "LOTA",
-    "local_direccion": "CALLE CAUPOLICAN  270",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "",
-    "local_lat": "-37.0913924",
-    "local_lng": "-73.1568581",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "9538",
     "fk_region": "11",
     "fk_comuna": "273",
@@ -2071,7 +2139,24 @@
     "local_telefono": "+56953340926",
     "local_lat": "-38.032863",
     "local_lng": "-73.072006",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "9568",
+    "fk_region": "13",
+    "fk_comuna": "318",
+    "fk_localidad": "337",
+    "local_nombre": "FARMACIA LA ISLA L1",
+    "comuna_nombre": "QUELLON",
+    "localidad_nombre": "QUELLON",
+    "local_direccion": "CALLE RAMÓN FREIRE  296",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "08:59:00",
+    "local_telefono": "998786545",
+    "local_lat": "-43.1195297",
+    "local_lng": "-73.6169623",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -2088,61 +2173,78 @@
     "local_telefono": "322693901",
     "local_lat": "-32.9582841",
     "local_lng": "-71.54399409999999",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-09",
-    "local_id": "9742",
-    "fk_region": "14",
-    "fk_comuna": "324",
-    "fk_localidad": "343",
-    "local_nombre": "FARMACIA DR. SIMI ",
-    "comuna_nombre": "AYSEN",
-    "localidad_nombre": "AYSEN",
-    "local_direccion": "CALLE AVENIDA BERNARDO O'HIGGINS 605",
-    "funcionamiento_hora_apertura": "00:00:00",
-    "funcionamiento_hora_cierre": "23:59:00",
-    "local_telefono": "949373706",
-    "local_lat": "-45.40529069999999",
-    "local_lng": "-72.6977939",
     "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "9907",
+    "fecha": "2026-08-09",
+    "local_id": "9744",
+    "fk_region": "7",
+    "fk_comuna": "83",
+    "fk_localidad": "547",
+    "local_nombre": "DEL DR. SIMI ",
+    "comuna_nombre": "BUIN",
+    "localidad_nombre": "TURNOS",
+    "local_direccion": "AVENIDA JOSE MANUEL BALMACEDA 486",
+    "funcionamiento_hora_apertura": "08:00:00",
+    "funcionamiento_hora_cierre": "07:59:00",
+    "local_telefono": "",
+    "local_lat": "-33.7326048",
+    "local_lng": "-70.7423132",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "9780",
+    "fk_region": "9",
+    "fk_comuna": "182",
+    "fk_localidad": "201",
+    "local_nombre": " FARMACIA BUENOS AIRES Nº2",
+    "comuna_nombre": "PARRAL",
+    "localidad_nombre": "PARRAL",
+    "local_direccion": "Anibal Pinto, 815-A",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "01:00:00",
+    "local_telefono": "+56978273024",
+    "local_lat": "-36.14092565724192",
+    "local_lng": "-71.82095840216903",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "9818",
+    "fk_region": "9",
+    "fk_comuna": "192",
+    "fk_localidad": "211",
+    "local_nombre": "FARMACIA MAULE",
+    "comuna_nombre": "SAN JAVIER",
+    "localidad_nombre": "SAN JAVIER",
+    "local_direccion": "Balmaceda 450",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "01:00:00",
+    "local_telefono": "+56974512043",
+    "local_lat": "-35.60158730000001",
+    "local_lng": "-71.7072641",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "9984",
     "fk_region": "8",
     "fk_comuna": "158",
     "fk_localidad": "177",
-    "local_nombre": "FARMACIA PICHILEMU",
+    "local_nombre": "FARMACIA DR SIMI",
     "comuna_nombre": "PICHILEMU",
     "localidad_nombre": "PICHILEMU",
-    "local_direccion": "Avenida Comercio 2045",
+    "local_direccion": "Dionisio Acevedo 305",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "+56949826997",
-    "local_lat": "-34.4042046",
-    "local_lng": "-72.0253001",
-    "funcionamiento_dia": "sabado"
+    "local_telefono": "",
+    "local_lat": "-34.3877161",
+    "local_lng": "-72.006473",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "9937",
-    "fk_region": "5",
-    "fk_comuna": "33",
-    "fk_localidad": "89",
-    "local_nombre": "FARMACIA MAICAO ",
-    "comuna_nombre": "COQUIMBO",
-    "localidad_nombre": "COQUIMBO",
-    "local_direccion": "CALLE JOSÉ SANTIAGO ALDUNATE 1237",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "931107723",
-    "local_lat": "-29.9550702",
-    "local_lng": "-71.3388495",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "10206",
     "fk_region": "12",
     "fk_comuna": "283",
@@ -2156,27 +2258,27 @@
     "local_telefono": "",
     "local_lat": "-40.1316377",
     "local_lng": "-72.3828604",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "10267",
-    "fk_region": "7",
-    "fk_comuna": "83",
-    "fk_localidad": "547",
-    "local_nombre": "PRAT",
-    "comuna_nombre": "BUIN",
-    "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA ARTURO PRAT 116",
-    "funcionamiento_hora_apertura": "08:00:00",
-    "funcionamiento_hora_cierre": "07:59:00",
-    "local_telefono": "950974318",
-    "local_lat": "-33.7343672",
-    "local_lng": "-70.7377947",
-    "funcionamiento_dia": "sabado"
+    "fecha": "2026-08-09",
+    "local_id": "10286",
+    "fk_region": "9",
+    "fk_comuna": "181",
+    "fk_localidad": "200",
+    "local_nombre": "FARMACIA FARMAFER N° 2",
+    "comuna_nombre": "MOLINA",
+    "localidad_nombre": "MOLINA",
+    "local_direccion": "AVENIDA LUIS CRUZ MARTINEZ, 1798, MOLINA",
+    "funcionamiento_hora_apertura": "09:00:00",
+    "funcionamiento_hora_cierre": "01:00:00",
+    "local_telefono": "",
+    "local_lat": "-35.11241102318462",
+    "local_lng": "-71.28581050764751",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "10676",
     "fk_region": "11",
     "fk_comuna": "277",
@@ -2190,7 +2292,24 @@
     "local_telefono": "",
     "local_lat": "-39.177372",
     "local_lng": "-73.168088",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "10689",
+    "fk_region": "7",
+    "fk_comuna": "111",
+    "fk_localidad": "552",
+    "local_nombre": "Mas ahorro",
+    "comuna_nombre": "PADRE HURTADO",
+    "localidad_nombre": "TURNOS",
+    "local_direccion": "AVENIDA LOS SILOS 617",
+    "funcionamiento_hora_apertura": "08:00:00",
+    "funcionamiento_hora_cierre": "07:59:00",
+    "local_telefono": "1",
+    "local_lat": "-33.573791",
+    "local_lng": "-70.8110778",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -2207,7 +2326,7 @@
     "local_telefono": "",
     "local_lat": "-33.5867011",
     "local_lng": "-70.58001",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -2224,7 +2343,24 @@
     "local_telefono": "",
     "local_lat": "-39.2804774",
     "local_lng": "-72.2253331",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "11001",
+    "fk_region": "7",
+    "fk_comuna": "123",
+    "fk_localidad": "559",
+    "local_nombre": "Farmacuenta",
+    "comuna_nombre": "RENCA",
+    "localidad_nombre": "TURNOS",
+    "local_direccion": "CALLE ARTURO PRAT  5093",
+    "funcionamiento_hora_apertura": "08:00:00",
+    "funcionamiento_hora_cierre": "07:59:00",
+    "local_telefono": "998884568",
+    "local_lat": "-33.4042487",
+    "local_lng": "-70.7231638",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -2241,7 +2377,7 @@
     "local_telefono": "998884568",
     "local_lat": "-33.4408151",
     "local_lng": "-70.543644",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -2258,24 +2394,7 @@
     "local_telefono": "",
     "local_lat": "-33.5238806",
     "local_lng": "-70.6600397",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "11730",
-    "fk_region": "7",
-    "fk_comuna": "92",
-    "fk_localidad": "551",
-    "local_nombre": "OLIMPICA",
-    "comuna_nombre": "ESTACION CENTRAL",
-    "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA ECUADOR 5193",
-    "funcionamiento_hora_apertura": "08:00:00",
-    "funcionamiento_hora_cierre": "07:59:00",
-    "local_telefono": "950223703",
-    "local_lat": "-33.4561204",
-    "local_lng": "-70.7058187",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -2292,7 +2411,7 @@
     "local_telefono": "226944000",
     "local_lat": "-22.4526379",
     "local_lng": "-68.9288743",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -2309,44 +2428,10 @@
     "local_telefono": "963060175",
     "local_lat": "-32.98558",
     "local_lng": "-71.2752652",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-09",
-    "local_id": "12203",
-    "fk_region": "11",
-    "fk_comuna": "255",
-    "fk_localidad": "274",
-    "local_nombre": "FARMACIA CRUZ VERDE 1197",
-    "comuna_nombre": "CURACAUTIN",
-    "localidad_nombre": "CURACAUTIN",
-    "local_direccion": "AVENIDA BERNADO OHIGGINS 690",
-    "funcionamiento_hora_apertura": "00:00:00",
-    "funcionamiento_hora_cierre": "00:00:00",
-    "local_telefono": "226944000",
-    "local_lat": "-38.4377862",
-    "local_lng": "-71.8890575",
     "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "12297",
-    "fk_region": "11",
-    "fk_comuna": "251",
-    "fk_localidad": "270",
-    "local_nombre": "FARMACIA ECOFAR",
-    "comuna_nombre": "ANGOL",
-    "localidad_nombre": "ANGOL",
-    "local_direccion": "CALLE CAUPOLICAN 333",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "",
-    "local_lat": "-37.797559",
-    "local_lng": "-72.709925",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "local_id": "12301",
     "fk_region": "11",
     "fk_comuna": "276",
@@ -2360,58 +2445,58 @@
     "local_telefono": "",
     "local_lat": "-38.9964624",
     "local_lng": "-73.0897202",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "12519",
-    "fk_region": "12",
-    "fk_comuna": "291",
-    "fk_localidad": "310",
-    "local_nombre": "FARMACIA CRUZ VERDE ",
-    "comuna_nombre": "PANGUIPULLI",
-    "localidad_nombre": "PANGUIPULLI",
-    "local_direccion": "CALLE DIEGO PORTALES  88",
-    "funcionamiento_hora_apertura": "09:00:00",
-    "funcionamiento_hora_cierre": "08:59:00",
-    "local_telefono": "",
-    "local_lat": "-39.6432299",
-    "local_lng": "-72.3353",
-    "funcionamiento_dia": "sabado"
-  },
-  {
-    "fecha": "2026-08-08",
-    "local_id": "12802",
+    "fecha": "2026-08-09",
+    "local_id": "12517",
     "fk_region": "10",
-    "fk_comuna": "345",
-    "fk_localidad": "363",
-    "local_nombre": "FARMACIA FARMI OKEY",
-    "comuna_nombre": "HUALPEN",
-    "localidad_nombre": "HUALPEN LOCALIDAD 1",
-    "local_direccion": "CALLE ALEMANIA  2927",
+    "fk_comuna": "227",
+    "fk_localidad": "246",
+    "local_nombre": "FARMACIA AURA",
+    "comuna_nombre": "PENCO",
+    "localidad_nombre": "PENCO",
+    "local_direccion": "CALLE FREIRE 410",
     "funcionamiento_hora_apertura": "09:00:00",
     "funcionamiento_hora_cierre": "08:59:00",
     "local_telefono": "",
-    "local_lat": "-36.7838245",
-    "local_lng": "-73.1015637",
-    "funcionamiento_dia": "sabado"
+    "local_lat": "-36.7379454",
+    "local_lng": "-72.9962315",
+    "funcionamiento_dia": "domingo"
   },
   {
-    "fecha": "2026-08-08",
-    "local_id": "12856",
+    "fecha": "2026-08-09",
+    "local_id": "12804",
     "fk_region": "7",
     "fk_comuna": "90",
     "fk_localidad": "550",
-    "local_nombre": "DEL DR SIMI",
+    "local_nombre": "VIA SALUD ",
     "comuna_nombre": "EL BOSQUE",
     "localidad_nombre": "TURNOS",
-    "local_direccion": "AVENIDA GRAN AVENIDA JOSÉ MIGUEL CARRERA 13057",
+    "local_direccion": "AVENIDA PADRE HURTADO  11309",
     "funcionamiento_hora_apertura": "08:00:00",
     "funcionamiento_hora_cierre": "07:59:00",
     "local_telefono": "",
-    "local_lat": "-33.5732713",
-    "local_lng": "-70.6905554",
-    "funcionamiento_dia": "sabado"
+    "local_lat": "-33.5604352",
+    "local_lng": "-70.6707256",
+    "funcionamiento_dia": "domingo"
+  },
+  {
+    "fecha": "2026-08-09",
+    "local_id": "12919",
+    "fk_region": "1",
+    "fk_comuna": "1",
+    "fk_localidad": "57",
+    "local_nombre": "24 HORAS",
+    "comuna_nombre": "ARICA",
+    "localidad_nombre": "ARICA - CENTRAL",
+    "local_direccion": "CALLE PATRICIO LYNCH 435",
+    "funcionamiento_hora_apertura": "21:00:00",
+    "funcionamiento_hora_cierre": "09:00:00",
+    "local_telefono": "323185689",
+    "local_lat": "-18.4797563",
+    "local_lng": "-70.3172083",
+    "funcionamiento_dia": "domingo"
   },
   {
     "fecha": "2026-07-01",
@@ -2428,6 +2513,6 @@
     "local_telefono": "",
     "local_lat": "-33.491884",
     "local_lng": "-70.5408984",
-    "funcionamiento_dia": "sabado"
+    "funcionamiento_dia": "domingo"
   }
 ]
