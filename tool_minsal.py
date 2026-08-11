@@ -211,6 +211,12 @@ def esta_abierta(reg: dict, momento: datetime) -> bool | None:
     a, c = _parse_hora(reg["apertura"]), _parse_hora(reg["cierre"])
     if a is None or c is None:
         return None
+    if a == c:
+        # Apertura y cierre idénticos: el dato es ambiguo (¿veinticuatro
+        # horas? ¿registro incompleto?). Se devuelve None para rotularlo
+        # como no verificable en vez de afirmar que está cerrada, lo que
+        # podría llevar al usuario a descartarla y trasladarse más lejos.
+        return None
     hora = momento.time()
     if c < a:  # cruza medianoche
         return hora >= a or hora <= c
