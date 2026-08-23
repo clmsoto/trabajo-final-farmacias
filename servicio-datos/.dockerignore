@@ -1,0 +1,7 @@
+.env
+datos/
+__pycache__/
+*.pyc
+ingesta_vademecum_cl.py
+verificar_ingesta.py
+sincronizar_turnos.py
