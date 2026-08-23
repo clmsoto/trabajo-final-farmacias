@@ -21,6 +21,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import BaseModel, Field
+from datetime import datetime, timezone
 
 from guardrail_salida import revisar
 from tool_minsal import (
@@ -60,6 +61,7 @@ class AssistantState(TypedDict):
     rag_context: str | None
     rag_citas: list | None
     minsal_advertencia: str | None
+    minsal_listado: str | None
 
 
 # ---------------------------------------------------------------------------
@@ -118,11 +120,9 @@ router_llm = ChatOpenAI(model="gpt-5.6-luna").with_structured_output(
     IntentClassification
 )
 
-
 # ---------------------------------------------------------------------------
 # 3. Nodos
 # ---------------------------------------------------------------------------
-
 
 def reset_node(state: AssistantState) -> dict:
     """
@@ -142,6 +142,7 @@ def reset_node(state: AssistantState) -> dict:
         "rag_context": None,
         "rag_citas": [],
         "minsal_advertencia": None,
+        "minsal_listado": None,
     }
 
 
@@ -189,6 +190,61 @@ def route_from_intent(state: AssistantState) -> str:
     # es el destino más conservador de los cuatro.
     return destinos.get(state["intent"], "guardrail_reject")
 
+# Umbral a partir del cual el volcado de turnos se considera viejo. Los
+# turnos rotan a diario, así que un volcado de más de un día puede estar
+# desactualizado. Reemplaza a la lógica de origen anterior: ya no hay
+# respaldo local que rotular, sino un volcado con fecha que envejece.
+HORAS_FRESCURA = 24
+
+
+def _listado_regional(resultado: dict) -> str | None:
+    """
+    Arma el listado de farmacias con los datos literales de la fuente.
+
+    Una lista de veintiséis locales no necesita redacción, y dejarla al
+    modelo arriesga que altere nombres o direcciones al reescribirlos:
+    se observó 'AHORROFARMA' convertido en 'Ahorrof फारma'. Un nombre
+    corrupto es un dato inservible, porque quien lo busque no encuentra
+    el local.
+    """
+    comunas = resultado.get("comunas") or {}
+    if not comunas:
+        return None
+
+    lineas = []
+    for comuna, locales in comunas.items():
+        for f in locales:
+            estado = {True: "abierta ahora", False: "cerrada ahora"}.get(
+                f["abierta_ahora"], "horario no verificable"
+            )
+            noct = " · turno nocturno" if f["nocturno"] else ""
+            lineas.append(
+                f"{comuna.title()} — {f['nombre'].title()}, "
+                f"{f['direccion'].title()} "
+                f"({f['horario']}{noct} · {estado})"
+            )
+    return "\n".join(lineas)
+
+def _antiguedad(capturado_en: str | None) -> str | None:
+    """Devuelve una advertencia si el volcado de turnos es viejo, o None."""
+    if not capturado_en:
+        return (
+            "El servicio no tiene turnos cargados en este momento. "
+            "Confirma en otra fuente antes de trasladarte."
+        )
+    try:
+        t = datetime.fromisoformat(capturado_en)
+    except ValueError:
+        return None
+
+    horas = (datetime.now(timezone.utc) - t).total_seconds() / 3600
+    if horas < HORAS_FRESCURA:
+        return None
+    return (
+        f"Los turnos se actualizaron hace {int(horas)} horas y pueden haber "
+        "cambiado. Confirma antes de trasladarte."
+    )
+
 
 def tool_minsal_node(state: AssistantState) -> dict:
     # Consulta regional: tiene prioridad sobre la comuna, porque el usuario
@@ -199,9 +255,10 @@ def tool_minsal_node(state: AssistantState) -> dict:
         return {
             "minsal_context": formatear_contexto_region(resultado),
             "minsal_sugerencias": [],
-            "minsal_advertencia": resultado.get("advertencia"),
+            "minsal_advertencia": _antiguedad(resultado.get("capturado_en")),
+            "minsal_listado": _listado_regional(resultado),
         }
-
+    
     comuna = state.get("comuna")
     if not comuna:
         return {
@@ -214,8 +271,9 @@ def tool_minsal_node(state: AssistantState) -> dict:
         }
 
     # Si es la misma comuna del turno anterior, se reutiliza el resultado.
-    # La advertencia se propaga igual: si el dato vino del respaldo, el
-    # seguimiento debe seguir rotulándolo.
+    # Un seguimiento como "¿cuál es su dirección?" no necesita reconsultar:
+    # los datos no cambiaron, y reconsultar arriesga que el resultado
+    # difiera del que el usuario ya vio en pantalla.
     previo = state.get("minsal_resultado")
     misma_comuna = state.get("minsal_comuna_consultada") == normalizar_texto(comuna)
     if previo and misma_comuna:
@@ -223,22 +281,17 @@ def tool_minsal_node(state: AssistantState) -> dict:
         return {
             "minsal_context": formatear_contexto(previo),
             "minsal_sugerencias": previo.get("comunas_sugeridas") or [],
-            "minsal_advertencia": previo.get("advertencia"),
+            "minsal_advertencia": _antiguedad(previo.get("capturado_en")),
             "minsal_comuna_consultada": normalizar_texto(comuna),
             "minsal_resultado": previo,
         }
 
-    try:
-        resultado = buscar_turnos(comuna)
-    except RuntimeError as e:
-        # Ni datos en vivo ni respaldo: se informa la falla, no se inventa.
-        print(f"[minsal] {e}")
+    resultado = buscar_turnos(comuna)
+
+    # El servicio no respondió: se informa la falla, no se inventa.
+    if resultado.get("error"):
         return {
-            "minsal_context": (
-                "El servicio de farmacias de turno no está disponible en "
-                "este momento y no hay datos de respaldo. Informa al usuario "
-                "que intente más tarde."
-            ),
+            "minsal_context": formatear_contexto(resultado),
             "minsal_sugerencias": [],
             "minsal_advertencia": None,
         }
@@ -246,11 +299,10 @@ def tool_minsal_node(state: AssistantState) -> dict:
     return {
         "minsal_context": formatear_contexto(resultado),
         "minsal_sugerencias": resultado.get("comunas_sugeridas") or [],
-        "minsal_advertencia": resultado.get("advertencia"),
+        "minsal_advertencia": _antiguedad(resultado.get("capturado_en")),
         "minsal_comuna_consultada": normalizar_texto(comuna),
         "minsal_resultado": resultado,
     }
-
 
 def tool_rag_node(state: AssistantState) -> dict:
     # TODO: la consulta usa solo el último mensaje. Una pregunta de
@@ -308,6 +360,13 @@ dilo directo: "No tengo el teléfono de esa farmacia" en vez de "el
 contexto no informa el teléfono".
 
 No uses formato markdown: responde en texto plano.
+
+Los nombres de farmacia, direcciones y teléfonos vienen en mayúsculas en
+la fuente. Escríbelos en formato normal (primera letra de cada palabra en
+mayúscula), pero sin cambiar ni corregir ninguna palabra: un nombre
+alterado es un dato inservible, porque quien lo busque no encuentra el
+local.
+
 """
 
 respuesta_llm = ChatOpenAI(model="gpt-5.6-luna")
@@ -347,10 +406,7 @@ def response_node(state: AssistantState) -> dict:
     citas = state.get("rag_citas") or []
     if citas:
         fuentes = ", ".join(c["ficha"] for c in citas)
-        texto += (
-            f"\n\nFuente: fichas de {fuentes} "
-            "(Comprehensive Drug Information Dataset)."
-        )
+        texto += f"\n\nFuente: vademécum chileno · principios activos: {fuentes}."
 
     # Ídem para las comunas alternativas. Por eso formatear_contexto no las
     # incluye en el texto que ve el modelo: si llegaran por ambas vías, la
@@ -359,9 +415,13 @@ def response_node(state: AssistantState) -> dict:
     if sugerencias:
         texto += (
             "\n\nComunas cercanas con turno vigente: "
-            + ", ".join(sugerencias)
+            + ", ".join(s.title() for s in sugerencias)
             + "."
         )
+
+    listado = state.get("minsal_listado")
+    if listado:
+        texto += f"\n\n{listado}"
 
     # El aviso de respaldo se antepone por código para conservar la fecha
     # de captura exacta: cuando viajaba en el contexto, el modelo lo
@@ -430,12 +490,12 @@ if __name__ == "__main__":
 
     pruebas = [
         # 1 y 2: historial. El segundo turno no menciona la comuna.
-        "¿Hay una farmacia de turno en Recoleta?",
+        "¿Hay una farmacia de turno en Pudahuel?",
         "¿Cuál es su dirección?",
         # 3: consulta regional.
         "¿Y en la Región Metropolitana?",
         # 4: comuna sin turno vigente, tras una regional (precedencia).
-        "Estoy en Peñalolén",
+        "Estoy en Providencia",
         # 5: ruta RAG con cita.
         "¿Qué contraindicaciones tiene el ibuprofeno?",
         # 6: guardrail clínico.

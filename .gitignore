@@ -2,3 +2,6 @@
 __pycache__/
 *.sqlite
 .venv/
+servicio-datos/datos/
+servicio-datos/.env
+servicio-datos/__pycache__/
